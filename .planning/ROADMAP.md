@@ -39,7 +39,11 @@ Plans:
   2. User can toggle between dark and light themes via navbar control
   3. Theme preference persists across browser sessions
   4. No flash of unstyled content (FOUC) on page load
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Define theme CSS tokens and merge glassmorphism classes
+- [ ] 02-02-PLAN.md — Refactor layout.tsx to CSS vars and create ThemeToggle component
 
 ### Phase 3: Content Sections
 **Goal**: All portfolio content sections render with glassmorphism styling and responsive layout
@@ -92,7 +96,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Config | 1/2 | In Progress | - |
-| 2. Theming & Providers | 0/TBD | Not started | - |
+| 2. Theming & Providers | 0/2 | Not started | - |
 | 3. Content Sections | 0/TBD | Not started | - |
 | 4. i18n (Vietnamese/English) | 0/TBD | Not started | - |
 | 5. Particles & Visual Effects | 0/TBD | Not started | - |
