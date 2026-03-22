@@ -24,7 +24,11 @@ A 6-phase build for a visually distinctive portfolio site — from Next.js 15 sc
   2. All visible text comes from `site.ts` — zero hardcoded strings in any component
   3. Glassmorphism utility classes (backdrop-blur, transparency, borders) produce visible glass-card effects
   4. Z-index token system defined in CSS — prevents stacking context conflicts between glassmorphism layers
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Scaffold Next.js 15 project and configure CSS design system
+- [ ] 01-02-PLAN.md — Create centralized site.ts config with typed interfaces and root layout
 
 ### Phase 2: Theming & Providers
 **Goal**: Dark/light theme system works flawlessly with persistence and zero flash of unstyled content
@@ -87,7 +91,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Config | 0/TBD | Not started | - |
+| 1. Foundation & Config | 0/2 | Ready to execute | - |
 | 2. Theming & Providers | 0/TBD | Not started | - |
 | 3. Content Sections | 0/TBD | Not started | - |
 | 4. i18n (Vietnamese/English) | 0/TBD | Not started | - |
