@@ -54,7 +54,12 @@ Plans:
   2. All sections visible and populated — Hero, Story, Arsenal, Gallery, Values, Social Links
   3. Content displays cleanly on both desktop (1080p+) and mobile (<768px) viewports
   4. Social links (GitHub, LinkedIn, Email) are clickable and open correctly
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Create navbar and first two content sections (Hero, Story)
+- [ ] 03-02-PLAN.md — Create content sections (Arsenal, Gallery, Values)
+- [ ] 03-03-PLAN.md — Create SocialLinks, wire all sections into page, add Navbar to layout
 
 ### Phase 4: i18n (Vietnamese/English)
 **Goal**: Full Vietnamese/English language support with persistent preference and URL-based locale
@@ -97,7 +102,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Foundation & Config | 1/2 | In Progress | - |
 | 2. Theming & Providers | 0/2 | Not started | - |
-| 3. Content Sections | 0/TBD | Not started | - |
+| 3. Content Sections | 0/3 | Not started | - |
 | 4. i18n (Vietnamese/English) | 0/TBD | Not started | - |
 | 5. Particles & Visual Effects | 0/TBD | Not started | - |
 | 6. Animations & Deployment | 0/TBD | Not started | - |
