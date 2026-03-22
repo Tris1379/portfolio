@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #a8e6cf;
+  --color-surface: #0a0a0a;
+  --color-surface-light: #1a122e;
+
+  --font-display: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --z-particles: 0;
+  --z-content: 10;
+  --z-cards: 20;
+  --z-navbar: 50;
+  --z-modal: 100;
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.75rem;
+  }
+
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+  }
+}
+
+@supports not (backdrop-filter: blur(12px)) {
+  .glass {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.9);
+  }
+}
