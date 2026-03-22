@@ -12,11 +12,10 @@ Deliver a polished, technically impressive portfolio that demonstrates frontend 
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ Centralized data architecture — all text, images, and config managed via `src/config/site.ts` — Phase 1
 
 ### Active
 
-- [ ] Centralized data architecture — all text, images, and config managed via `src/config/site.ts`
 - [ ] Glassmorphism UI with card-based layout, responsive on PC and Mobile
 - [ ] tsParticles maple leaf falling effect with device-aware performance tuning
 - [ ] i18n support (Vietnamese / English)
@@ -36,7 +35,7 @@ Deliver a polished, technically impressive portfolio that demonstrates frontend 
 ## Context
 
 - **Domain:** Personal portfolio website for Information Security professional
-- **Tech stack:** Next.js 14 (App Router), Tailwind CSS, Framer Motion, tsParticles v3
+- **Tech stack:** Next.js 15 (App Router), Tailwind CSS v4, Motion (framer-motion), tsParticles v3
 - **Deployment target:** Vercel with automatic deploys from main branch
 - **Design language:** Dark mode default (#0a0a0a), pastel green accent (#a8e6cf), glassmorphism cards, maple leaf particle effects
 - **Constraints:** Tailwind uses hex colors only (no HSL), tsParticles v3 syntax, high z-index for navbar
@@ -44,7 +43,7 @@ Deliver a polished, technically impressive portfolio that demonstrates frontend 
 
 ## Constraints
 
-- **Tech Stack:** Next.js 14 App Router, Tailwind CSS, Framer Motion, tsParticles v3
+- **Tech Stack:** Next.js 15 App Router, Tailwind CSS v4, Motion, tsParticles v3
 - **Performance:** 60fps on mobile — particle count must auto-adjust per device
 - **Data Architecture:** Zero hardcoded text in components — everything via site.ts config
 - **Build:** Must pass `npm run build` with no errors for Vercel deployment
@@ -54,10 +53,11 @@ Deliver a polished, technically impressive portfolio that demonstrates frontend 
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Centralized site.ts config | Owner can update content without touching UI code | — Pending |
+| Centralized site.ts config | Owner can update content without touching UI code | ✓ Good |
 | tsParticles for effects | Industry standard for performant particle animations | — Pending |
-| Next.js App Router | Modern routing, server components, Vercel native | — Pending |
-| 4-phase execution plan | Prevents context window overflow during AI implementation | — Pending |
+| Next.js 15 App Router | Modern routing, server components, Vercel native | ✓ Good |
+| Tailwind v4 @theme | No config file, CSS-first design tokens | ✓ Good |
+| 6-phase execution plan | Prevents context window overflow, aligned with architecture deps | ✓ Good |
 
 ---
-*Last updated: 2025-03-22 after initialization*
+*Last updated: 2026-03-22 after Phase 1 (Foundation & Config)*
