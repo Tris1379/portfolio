@@ -9,10 +9,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Foundation
 
-- [ ] **FOUND-01**: Project initializes with Next.js 15 App Router, Tailwind CSS v4, TypeScript
+- [x] **FOUND-01**: Project initializes with Next.js 15 App Router, Tailwind CSS v4, TypeScript
 - [ ] **FOUND-02**: Centralized `site.ts` config drives all content — zero hardcoded text in components
-- [ ] **FOUND-03**: Glassmorphism utility classes defined in globals.css (backdrop-blur, transparency, borders)
-- [ ] **FOUND-04**: Z-index token system defined to prevent glassmorphism stacking context traps
+- [x] **FOUND-03**: Glassmorphism utility classes defined in globals.css (backdrop-blur, transparency, borders)
+- [x] **FOUND-04**: Z-index token system defined to prevent glassmorphism stacking context traps
 
 ### Theming
 
@@ -91,10 +91,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
+| FOUND-01 | Phase 1 | Complete |
 | FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
-| FOUND-04 | Phase 1 | Pending |
+| FOUND-03 | Phase 1 | Complete |
+| FOUND-04 | Phase 1 | Complete |
 | THEME-01 | Phase 2 | Pending |
 | THEME-02 | Phase 2 | Pending |
 | THEME-03 | Phase 2 | Pending |

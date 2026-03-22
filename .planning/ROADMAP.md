@@ -6,7 +6,7 @@ A 6-phase build for a visually distinctive portfolio site — from Next.js 15 sc
 
 ## Phases
 
-- [ ] **Phase 1: Foundation & Config** - Project scaffold, Tailwind v4 setup, glassmorphism utilities, z-index tokens, centralized site.ts
+- [ ] **Phase 1: Foundation & Config** - Project scaffold, Tailwind v4 setup, glassmorphism utilities, z-index tokens, centralized site.ts [1/2]
 - [ ] **Phase 2: Theming & Providers** - Dark/light theme system with persistence and no FOUC
 - [ ] **Phase 3: Content Sections** - All sections (Hero, Story, Arsenal, Gallery, Values, Social) with glassmorphism layout
 - [ ] **Phase 4: i18n (Vietnamese/English)** - Full language support with persistent preference and URL reflection
@@ -27,7 +27,7 @@ A 6-phase build for a visually distinctive portfolio site — from Next.js 15 sc
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Scaffold Next.js 15 project and configure CSS design system
+- [x] 01-01-PLAN.md — Scaffold Next.js 15 project and configure CSS design system
 - [ ] 01-02-PLAN.md — Create centralized site.ts config with typed interfaces and root layout
 
 ### Phase 2: Theming & Providers
@@ -91,7 +91,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Config | 0/2 | Ready to execute | - |
+| 1. Foundation & Config | 1/2 | In Progress | - |
 | 2. Theming & Providers | 0/TBD | Not started | - |
 | 3. Content Sections | 0/TBD | Not started | - |
 | 4. i18n (Vietnamese/English) | 0/TBD | Not started | - |
