@@ -4,7 +4,9 @@
   --color-primary: #a8e6cf;
   --color-surface: #0a0a0a;
   --color-surface-light: #1a122e;
-
+  --color-bg: var(--color-bg);
+  --color-text: var(--color-text);
+  --color-text-secondary: var(--color-text-secondary);
   --font-display: "Playfair Display", serif;
   --font-body: "Inter", sans-serif;
 }
@@ -17,6 +19,18 @@
   --z-cards: 20;
   --z-navbar: 50;
   --z-modal: 100;
+
+  /* Dark mode (DEFAULT — no .dark class needed) */
+  --color-bg: #0a0a0a;
+  --color-text: #ffffff;
+  --color-text-secondary: #a0a0a0;
+}
+
+.dark {
+  /* Light mode (activated when .dark class present on <html>) */
+  --color-bg: #faf8f5;
+  --color-text: #1a1a1a;
+  --color-text-secondary: #666666;
 }
 
 @layer components {
@@ -28,12 +42,9 @@
     border-radius: 0.75rem;
   }
 
-  .glass-dark {
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.75rem;
+  .dark .glass {
+    background: rgba(250, 248, 245, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -41,7 +52,7 @@
   .glass {
     background: rgba(0, 0, 0, 0.8);
   }
-  .glass-dark {
-    background: rgba(0, 0, 0, 0.9);
+  .dark .glass {
+    background: rgba(240, 236, 230, 0.9);
   }
 }
