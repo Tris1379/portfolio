@@ -23,19 +23,19 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Layout
 
-- [ ] **LYOUT-01**: Fixed navbar with glassmorphism styling, positioned above all content
-- [ ] **LYOUT-02**: Navbar includes theme toggle and language switcher
+- [x] **LYOUT-01**: Fixed navbar with glassmorphism styling, positioned above all content
+- [x] **LYOUT-02**: Navbar includes theme toggle and language switcher
 - [ ] **LYOUT-03**: Card-based layout with soft rounded corners on all content sections
 - [ ] **LYOUT-04**: Responsive design — displays cleanly on both PC and mobile
 - [ ] **LYOUT-05**: Content centered on screen with appropriate max-width
 
 ### Sections
 
-- [ ] **SECT-01**: Hero section displays name, title, and one-liner bio
-- [ ] **SECT-02**: Story section presents personal narrative and background
-- [ ] **SECT-03**: Arsenal section displays categorized skills in card grid
-- [ ] **SECT-04**: Gallery section showcases projects with descriptions
-- [ ] **SECT-05**: Values section presents personal/professional values
+- [x] **SECT-01**: Hero section displays name, title, and one-liner bio
+- [x] **SECT-02**: Story section presents personal narrative and background
+- [x] **SECT-03**: Arsenal section displays categorized skills in card grid
+- [x] **SECT-04**: Gallery section showcases projects with descriptions
+- [x] **SECT-05**: Values section presents personal/professional values
 - [ ] **SECT-06**: Social links section with GitHub, LinkedIn, and Email
 
 ### Particles
@@ -99,16 +99,16 @@ Which phases cover which requirements. Updated during roadmap creation.
 | THEME-02 | Phase 2 | Pending |
 | THEME-03 | Phase 2 | Pending |
 | THEME-04 | Phase 2 | Pending |
-| LYOUT-01 | Phase 3 | Pending |
-| LYOUT-02 | Phase 3 | Pending |
+| LYOUT-01 | Phase 3 | Complete |
+| LYOUT-02 | Phase 3 | Complete |
 | LYOUT-03 | Phase 3 | Pending |
 | LYOUT-04 | Phase 3 | Pending |
 | LYOUT-05 | Phase 3 | Pending |
-| SECT-01 | Phase 3 | Pending |
-| SECT-02 | Phase 3 | Pending |
-| SECT-03 | Phase 3 | Pending |
-| SECT-04 | Phase 3 | Pending |
-| SECT-05 | Phase 3 | Pending |
+| SECT-01 | Phase 3 | Complete |
+| SECT-02 | Phase 3 | Complete |
+| SECT-03 | Phase 3 | Complete |
+| SECT-04 | Phase 3 | Complete |
+| SECT-05 | Phase 3 | Complete |
 | SECT-06 | Phase 3 | Pending |
 | I18N-01 | Phase 4 | Pending |
 | I18N-02 | Phase 4 | Pending |
