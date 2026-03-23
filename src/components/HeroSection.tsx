@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { getConfig } from "@/config/i18n";
 import type { Locale } from "@/config/i18n";
 import { usePage, type PageId } from "@/components/PageContext";
-import { Eye, User, Route, Handshake } from "lucide-react";
+import { Eye, User, Route, Handshake, Image } from "lucide-react";
 import { useLocale } from "next-intl";
 
 const navCards: { id: PageId; icon: React.ReactNode; label: { en: string; vi: string } }[] = [
@@ -12,6 +12,7 @@ const navCards: { id: PageId; icon: React.ReactNode; label: { en: string; vi: st
   { id: "personality", icon: <User className="w-5 h-5" />, label: { en: "Personality", vi: "Tính cách" } },
   { id: "journey", icon: <Route className="w-5 h-5" />, label: { en: "Journey", vi: "Hành trình" } },
   { id: "companion", icon: <Handshake className="w-5 h-5" />, label: { en: "Companion", vi: "Đồng hành" } },
+  { id: "personal", icon: <Image className="w-5 h-5" />, label: { en: "Gallery", vi: "Bộ sưu tập" } },
 ];
 
 export function HeroSection({ locale }: { locale: Locale }) {
@@ -50,7 +51,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"
         >
           {navCards.map((card) => (
             <button

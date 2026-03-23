@@ -13,6 +13,7 @@ const navItems: { id: PageId; label: { en: string; vi: string } }[] = [
   { id: "personality", label: { en: "Personality", vi: "Tính cách" } },
   { id: "journey", label: { en: "Journey", vi: "Hành trình" } },
   { id: "companion", label: { en: "Companion", vi: "Đồng hành" } },
+  { id: "personal", label: { en: "Gallery", vi: "Bộ sưu tập" } },
 ];
 
 export function Navbar() {
