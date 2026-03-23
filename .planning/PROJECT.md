@@ -13,16 +13,16 @@ Deliver a polished, technically impressive portfolio that demonstrates frontend 
 ### Validated
 
 - ✓ Centralized data architecture — all text, images, and config managed via `src/config/site.ts` — Phase 1
+- ✓ Glassmorphism UI with card-based layout, responsive on PC and Mobile — Phase 3
+- ✓ Navbar with fixed positioning, high z-index, glassmorphism style — Phase 3
+- ✓ Sections: Story, Arsenal (skills), Gallery, Values — Phase 3
+- ✓ Social links: GitHub, LinkedIn, Email — Phase 3
 
 ### Active
 
-- [ ] Glassmorphism UI with card-based layout, responsive on PC and Mobile
 - [ ] tsParticles maple leaf falling effect with device-aware performance tuning
 - [ ] i18n support (Vietnamese / English)
 - [ ] Dark/Light theme toggle with smooth transitions
-- [ ] Navbar with fixed positioning, high z-index, glassmorphism style
-- [ ] Sections: Story, Arsenal (skills), Gallery, Values
-- [ ] Social links: GitHub, LinkedIn, Email
 - [ ] Vercel-ready deployment with clean build
 
 ### Out of Scope
@@ -60,4 +60,4 @@ Deliver a polished, technically impressive portfolio that demonstrates frontend 
 | 6-phase execution plan | Prevents context window overflow, aligned with architecture deps | ✓ Good |
 
 ---
-*Last updated: 2026-03-22 after Phase 1 (Foundation & Config)*
+*Last updated: 2026-03-23 after Phase 3 (Content Sections)*
