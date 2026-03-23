@@ -2,37 +2,37 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-stopped_at: Completed 03-content-sections-03-PLAN.md
-last_updated: "2026-03-23T00:57:10.108Z"
+status: in-progress
+stopped_at: Phase 04 complete
+last_updated: "2026-03-23T06:55:00.000Z"
 progress:
   total_phases: 6
-  completed_phases: 3
-  total_plans: 7
-  completed_plans: 7
+  completed_phases: 4
+  total_plans: 10
+  completed_plans: 10
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-03-22)
+See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Deliver a polished, technically impressive portfolio that demonstrates frontend engineering competence while authentically representing the owner's professional identity in Information Security.
-**Current focus:** Phase 03 — content-sections
+**Current focus:** Phase 04 — i18n (Vietnamese/English) — COMPLETE
 
 ## Current Position
 
-Phase: 03 (content-sections) — COMPLETE
+Phase: 04 (i18n-vietnamese-english) — COMPLETE
 Plan: 3 of 3
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 5
+- Total plans completed: 10
 - Average duration: 3 min
-- Total execution time: 0.20 hours
+- Total execution time: 0.25 hours
 
 **By Phase:**
 
@@ -45,6 +45,9 @@ Plan: 3 of 3
 | Phase 03-content-sections P02 | 3min | 3 tasks | 3 files |
 | Phase 03-content-sections P01 | 1min | 2 tasks | 4 files |
 | Phase 03-content-sections P03 | 3min | 3 tasks | 3 files |
+| Phase 04-i18n P01 | 2min | 3 tasks | 7 files |
+| Phase 04-i18n P02 | 2min | 2 tasks | 2 files |
+| Phase 04-i18n P03 | 3min | 4 tasks | 13 files |
 
 ## Accumulated Context
 
@@ -60,6 +63,9 @@ Recent decisions affecting current work:
 - [Phase 01-foundation-config]: Providers.tsx "use client" shell pattern keeps layout.tsx as Server Component
 - [Phase 03-content-sections]: SocialLinks title hardcoded as "Connect" since siteConfig.social has no title field
 - [Phase 03-content-sections]: Navbar placed inside Providers so ThemeToggle has ThemeProvider context
+- [Phase 04-i18n]: next-intl for routing only — no useTranslations(), components receive resolved config via getConfig()
+- [Phase 04-i18n]: createNavigation pattern for useRouter/usePathname (newer next-intl API)
+- [Phase 04-i18n]: getConfig() is pure function — safe in "use client" components
 
 ### Pending Todos
 
@@ -72,6 +78,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-23T01:00:00.000Z
-Stopped at: Completed 03-content-sections-03-PLAN.md
-Resume file: None
+Last session: 2026-03-23T06:55:00.000Z
+Stopped at: Phase 04 complete — ready for Phase 5
+Resume file: .planning/phases/04-i18n-vietnamese-english/
