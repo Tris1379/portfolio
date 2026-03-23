@@ -25,9 +25,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **LYOUT-01**: Fixed navbar with glassmorphism styling, positioned above all content
 - [x] **LYOUT-02**: Navbar includes theme toggle and language switcher
-- [ ] **LYOUT-03**: Card-based layout with soft rounded corners on all content sections
-- [ ] **LYOUT-04**: Responsive design — displays cleanly on both PC and mobile
-- [ ] **LYOUT-05**: Content centered on screen with appropriate max-width
+- [x] **LYOUT-03**: Card-based layout with soft rounded corners on all content sections
+- [x] **LYOUT-04**: Responsive design — displays cleanly on both PC and mobile
+- [x] **LYOUT-05**: Content centered on screen with appropriate max-width
 
 ### Sections
 
@@ -36,7 +36,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **SECT-03**: Arsenal section displays categorized skills in card grid
 - [x] **SECT-04**: Gallery section showcases projects with descriptions
 - [x] **SECT-05**: Values section presents personal/professional values
-- [ ] **SECT-06**: Social links section with GitHub, LinkedIn, and Email
+- [x] **SECT-06**: Social links section with GitHub, LinkedIn, and Email
 
 ### Particles
 
@@ -101,15 +101,15 @@ Which phases cover which requirements. Updated during roadmap creation.
 | THEME-04 | Phase 2 | Pending |
 | LYOUT-01 | Phase 3 | Complete |
 | LYOUT-02 | Phase 3 | Complete |
-| LYOUT-03 | Phase 3 | Pending |
-| LYOUT-04 | Phase 3 | Pending |
-| LYOUT-05 | Phase 3 | Pending |
+| LYOUT-03 | Phase 3 | Complete |
+| LYOUT-04 | Phase 3 | Complete |
+| LYOUT-05 | Phase 3 | Complete |
 | SECT-01 | Phase 3 | Complete |
 | SECT-02 | Phase 3 | Complete |
 | SECT-03 | Phase 3 | Complete |
 | SECT-04 | Phase 3 | Complete |
 | SECT-05 | Phase 3 | Complete |
-| SECT-06 | Phase 3 | Pending |
+| SECT-06 | Phase 3 | Complete |
 | I18N-01 | Phase 4 | Pending |
 | I18N-02 | Phase 4 | Pending |
 | I18N-03 | Phase 4 | Pending |
