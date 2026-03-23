@@ -1,4 +1,5 @@
-import { siteConfig } from "@/config/site";
+import { getConfig } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -7,7 +8,8 @@ const iconMap: Record<string, React.ReactNode> = {
   mail: <Mail className="w-5 h-5" />,
 };
 
-export function SocialLinks() {
+export function SocialLinks({ locale }: { locale: Locale }) {
+  const config = getConfig(locale);
   return (
     <section className="py-16 md:py-24">
       <div className="max-w-4xl mx-auto px-4 md:px-8">
@@ -15,7 +17,7 @@ export function SocialLinks() {
           Connect
         </h2>
         <div className="flex justify-center gap-6">
-          {siteConfig.social.map((link) => (
+          {config.social.map((link) => (
             <a
               key={link.platform}
               href={link.url}

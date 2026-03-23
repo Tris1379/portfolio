@@ -4,6 +4,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Providers } from "@/components/Providers";
 import { Navbar } from "@/components/Navbar";
+import { getConfig } from "@/config/i18n";
+import type { Locale } from "@/config/i18n";
 import "../globals.css";
 
 const inter = Inter({
@@ -18,6 +20,19 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const config = getConfig(locale as Locale);
+  return {
+    title: `${config.name} — Portfolio`,
+    description: `${config.title}`,
+  };
+}
+
 export default async function LocaleLayout({
   children,
   params,
@@ -26,6 +41,7 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
+  const messages = await getMessages();
 
   return (
     <html
@@ -34,7 +50,7 @@ export default async function LocaleLayout({
       className={`${inter.variable} ${playfair.variable}`}
     >
       <body className="bg-(--color-bg) text-(--color-text) antialiased font-[family-name:var(--font-body)]">
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>
           <Providers>
             <Navbar />
             {children}
