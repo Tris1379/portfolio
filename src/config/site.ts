@@ -334,8 +334,8 @@ export const siteConfig: SiteConfig = {
       categories: [
         { id: "all", label: { en: "All", vi: "Tất cả" } },
         { id: "nature", label: { en: "Nature", vi: "Thiên nhiên" } },
-        { id: "companions", label: { en: "Companions", vi: "Đồng hành" } },
-        { id: "work", label: { en: "Work", vi: "Công việc" } },
+        { id: "pets", label: { en: "Pets", vi: "Thú cưng" } },
+        { id: "workspace", label: { en: "Workspace", vi: "Không gian làm việc" } },
       ],
       items: [
         {
@@ -350,24 +350,24 @@ export const siteConfig: SiteConfig = {
           caption: { en: "Where the river meets the sea", vi: "Nơi sông gặp biển" },
         },
         {
-          category: "companions",
+          category: "pets",
           image: "/gallery/pet-1.png",
           caption: { en: "My faithful companion on late nights", vi: "Người bạn trung thành trong đêm khuya" },
           span: "wide",
         },
         {
-          category: "companions",
+          category: "pets",
           image: "/gallery/pet-2.png",
           caption: { en: "Quiet moments, warm company", vi: "Khoảnh khắc yên tĩnh, bạn đồng hành ấm áp" },
         },
         {
-          category: "work",
+          category: "workspace",
           image: "/gallery/workspace-1.png",
           caption: { en: "Where the magic happens", vi: "Nơi điều kỳ diệu xảy ra" },
           span: "wide",
         },
         {
-          category: "work",
+          category: "workspace",
           image: "/gallery/workspace-2.png",
           caption: { en: "The homelab that started it all", vi: "Homelab bắt đầu tất cả" },
           span: "tall",
@@ -378,7 +378,7 @@ export const siteConfig: SiteConfig = {
           caption: { en: "Autumn leaves, eternal inspiration", vi: "Lá mùa thu, nguồn cảm hứng bất tận" },
         },
         {
-          category: "work",
+          category: "workspace",
           image: "/gallery/workspace-3.png",
           caption: { en: "Late night debugging sessions", vi: "Phiên debug đêm khuya" },
         },
