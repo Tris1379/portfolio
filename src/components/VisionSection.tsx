@@ -15,7 +15,7 @@ export function VisionSection({ locale }: { locale: Locale }) {
       <div className="relative z-10 max-w-4xl mx-auto px-4 md:px-8 py-16">
         <button
           onClick={() => navigateTo("home")}
-          className="flex items-center gap-2 text-sm text-(--color-text-secondary) hover:text-(--color-primary) transition-colors mb-6"
+          className="flex items-center gap-2 text-sm text-(--color-text-secondary) hover:text-(--color-primary) transition-colors mb-6 relative z-[9999]"
         >
           <Home className="w-4 h-4" />
           Home
@@ -39,7 +39,7 @@ export function VisionSection({ locale }: { locale: Locale }) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 + index * 0.15 }}
-              className="glass p-6 md:p-8"
+              className="glass p-6 md:p-8 card-scroll"
             >
               <p className="text-(--color-text-secondary) text-lg leading-relaxed">
                 {paragraph}
