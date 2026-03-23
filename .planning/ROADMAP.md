@@ -70,7 +70,12 @@ Plans:
   2. Language preference persists across browser sessions
   3. All visible text updates to selected language — no hardcoded strings remain
   4. URL reflects current locale (e.g., /en/, /vi/)
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — Install next-intl and create routing/middleware infrastructure
+- [ ] 04-02-PLAN.md — Extend site.ts with bilingual data layer and getConfig resolver
+- [ ] 04-03-PLAN.md — Wire i18n into all components, pages, and LanguageSwitcher
 
 ### Phase 5: Particles & Visual Effects
 **Goal**: Maple leaf particle effects as the signature visual differentiator with device-aware performance
@@ -103,6 +108,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. Foundation & Config | 1/2 | In Progress | - |
 | 2. Theming & Providers | 0/2 | Not started | - |
 | 3. Content Sections | 0/3 | Not started | - |
-| 4. i18n (Vietnamese/English) | 0/TBD | Not started | - |
+| 4. i18n (Vietnamese/English) | 0/3 | Planned | - |
 | 5. Particles & Visual Effects | 0/TBD | Not started | - |
 | 6. Animations & Deployment | 0/TBD | Not started | - |
