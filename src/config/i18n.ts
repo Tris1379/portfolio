@@ -40,6 +40,49 @@ export function getConfig(locale: Locale) {
           description: item.description[locale],
         })),
       },
+      vision: {
+        title: siteConfig.sections.vision.title[locale],
+        subtitle: siteConfig.sections.vision.subtitle[locale],
+        paragraphs: siteConfig.sections.vision.paragraphs.map(
+          (p) => p[locale]
+        ),
+      },
+      personality: {
+        title: siteConfig.sections.personality.title[locale],
+        mbti: siteConfig.sections.personality.mbti,
+        traits: siteConfig.sections.personality.traits.map((t) => ({
+          name: t.name[locale],
+          description: t.description[locale],
+        })),
+      },
+      journey: {
+        title: siteConfig.sections.journey.title[locale],
+        paragraphs: siteConfig.sections.journey.paragraphs.map(
+          (p) => p[locale]
+        ),
+        lessons: siteConfig.sections.journey.lessons.map((l) => l[locale]),
+      },
+      companion: {
+        title: siteConfig.sections.companion.title[locale],
+        subtitle: siteConfig.sections.companion.subtitle[locale],
+        message: siteConfig.sections.companion.message[locale],
+        cta: siteConfig.sections.companion.cta[locale],
+        email: siteConfig.sections.companion.email,
+      },
+      personalSide: {
+        title: siteConfig.sections.personalSide.title[locale],
+        subtitle: siteConfig.sections.personalSide.subtitle[locale],
+        categories: siteConfig.sections.personalSide.categories.map((c) => ({
+          id: c.id,
+          label: c.label[locale],
+        })),
+        items: siteConfig.sections.personalSide.items.map((item) => ({
+          category: item.category,
+          image: item.image,
+          caption: item.caption[locale],
+          span: item.span,
+        })),
+      },
     },
     particles: siteConfig.particles, // NOT translated
   };

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #a8e6cf;
+  --color-primary: var(--color-primary-accent);
   --color-surface: #0a0a0a;
   --color-surface-light: #1a122e;
   --color-bg: var(--color-bg);
@@ -24,6 +24,8 @@
   --color-bg: #0a0a0a;
   --color-text: #ffffff;
   --color-text-secondary: #a0a0a0;
+  --color-primary-accent: #a8e6cf;
+  --color-primary-rgb: 168, 230, 207;
 }
 
 .dark {
@@ -31,28 +33,255 @@
   --color-bg: #faf8f5;
   --color-text: #1a1a1a;
   --color-text-secondary: #666666;
+  --color-primary-accent: #d64d2e;
+  --color-primary-rgb: 214, 77, 46;
 }
 
 @layer components {
   .glass {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 0.75rem;
+    transition: box-shadow 300ms ease, border-color 300ms ease;
+  }
+
+  .glass:hover {
+    border-color: rgba(var(--color-primary-rgb), 0.35);
+    box-shadow: 0 0 30px rgba(var(--color-primary-rgb), 0.2), 0 0 60px rgba(var(--color-primary-rgb), 0.1), 0 0 100px rgba(var(--color-primary-rgb), 0.04);
   }
 
   .dark .glass {
-    background: rgba(250, 248, 245, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(250, 248, 245, 0.85);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .dark .glass:hover {
+    border-color: rgba(var(--color-primary-rgb), 0.4);
+    box-shadow: 0 0 30px rgba(var(--color-primary-rgb), 0.25), 0 0 60px rgba(var(--color-primary-rgb), 0.12), 0 0 100px rgba(var(--color-primary-rgb), 0.05);
   }
 }
 
 @supports not (backdrop-filter: blur(12px)) {
   .glass {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
+  }
+  .glass:hover {
+    box-shadow: 0 0 30px rgba(var(--color-primary-rgb), 0.25);
   }
   .dark .glass {
-    background: rgba(240, 236, 230, 0.9);
+    background: rgba(240, 236, 230, 0.95);
   }
+  .dark .glass:hover {
+    box-shadow: 0 0 30px rgba(var(--color-primary-rgb), 0.3);
+  }
+}
+
+/* ===================== Scrollable Cards ===================== */
+
+.card-scroll {
+  max-height: 60vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.card-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.card-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card-scroll::-webkit-scrollbar-thumb {
+  background: rgba(var(--color-primary-rgb), 0.3);
+  border-radius: 9999px;
+}
+
+.card-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--color-primary-rgb), 0.5);
+}
+
+/* Firefox */
+.card-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--color-primary-rgb), 0.3) transparent;
+}
+
+/* ===================== Atmospheric Background Keyframes ===================== */
+
+@keyframes floatCloud1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(80px, -40px) scale(1.05); }
+  66% { transform: translate(-40px, 30px) scale(0.95); }
+}
+
+@keyframes floatCloud2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-60px, 50px) scale(0.95); }
+  66% { transform: translate(50px, -30px) scale(1.05); }
+}
+
+@keyframes floatCloud3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -60px) scale(1.08); }
+}
+
+@keyframes windShift {
+  0% { background-position: 0 0, 0 0, 0 0; }
+  100% { background-position: 120px 0, -80px 40px, 60px -20px; }
+}
+
+@keyframes lighthouseBeam {
+  0%, 100% { opacity: 0.5; transform: rotate(-20deg); }
+  50% { opacity: 0.8; transform: rotate(20deg); }
+}
+
+/* ===================== Section Background Base ===================== */
+
+.atmosphere-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background image — fixed to viewport so it always fills the screen */
+.atmosphere-bg {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+/* Dark overlay for text readability — sits above bg image, below content */
+.atmosphere-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.55) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Text contrast for headings/subtitles on atmospheric backgrounds */
+.atmosphere-section h2,
+.atmosphere-section h3 {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.3);
+}
+
+.atmosphere-section .text-\(--color-text-secondary\) {
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Stronger glass cards on dark atmospheric backgrounds */
+.atmosphere-section .glass {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(30px) saturate(1.2);
+  -webkit-backdrop-filter: blur(30px) saturate(1.2);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.atmosphere-section .glass:hover {
+  border-color: rgba(var(--color-primary-rgb), 0.45);
+  box-shadow: 0 0 35px rgba(var(--color-primary-rgb), 0.25), 0 0 70px rgba(var(--color-primary-rgb), 0.12), 0 0 110px rgba(var(--color-primary-rgb), 0.05);
+}
+
+/* Light mode override — keep opaque cards */
+.dark .atmosphere-section .glass {
+  background: rgba(250, 248, 245, 0.88);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.dark .atmosphere-section .glass:hover {
+  border-color: rgba(var(--color-primary-rgb), 0.5);
+  box-shadow: 0 0 35px rgba(var(--color-primary-rgb), 0.3), 0 0 70px rgba(var(--color-primary-rgb), 0.15), 0 0 110px rgba(var(--color-primary-rgb), 0.06);
+}
+
+/* ===================== Vision — Cloud Overlay ===================== */
+
+.atmosphere-vision::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 25% 35%, rgba(168, 230, 207, 0.15), transparent),
+    radial-gradient(ellipse 500px 350px at 75% 25%, rgba(120, 200, 230, 0.12), transparent),
+    radial-gradient(ellipse 450px 300px at 55% 70%, rgba(140, 210, 190, 0.1), transparent),
+    radial-gradient(ellipse 350px 250px at 15% 80%, rgba(100, 180, 220, 0.08), transparent);
+  animation: floatCloud1 20s ease-in-out infinite;
+  filter: blur(50px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ===================== Personality — Wind Current Overlay ===================== */
+
+.atmosphere-personality::before {
+  content: '';
+  position: absolute;
+  inset: -100px;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 48px,
+      rgba(80, 140, 255, 0.06) 48px,
+      rgba(80, 140, 255, 0.06) 50px
+    ),
+    repeating-linear-gradient(
+      115deg,
+      transparent,
+      transparent 68px,
+      rgba(100, 160, 255, 0.04) 68px,
+      rgba(100, 160, 255, 0.04) 70px
+    ),
+    repeating-linear-gradient(
+      150deg,
+      transparent,
+      transparent 88px,
+      rgba(60, 120, 240, 0.05) 88px,
+      rgba(60, 120, 240, 0.05) 90px
+    );
+  animation: windShift 30s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ===================== Journey — Sunset Glow Overlay ===================== */
+
+.atmosphere-journey::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 100% 50% at 50% 45%, rgba(224, 138, 74, 0.1), transparent),
+    radial-gradient(circle 250px at 50% 42%, rgba(255, 180, 80, 0.06), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ===================== Companion — Lighthouse Beam Overlay ===================== */
+
+.atmosphere-companion::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  width: 0;
+  height: 0;
+  margin-left: 0;
+  border-left: 300px solid transparent;
+  border-right: 300px solid transparent;
+  border-bottom: 500px solid rgba(255, 240, 180, 0.04);
+  animation: lighthouseBeam 8s ease-in-out infinite;
+  transform-origin: 50% 100%;
+  z-index: 2;
+  pointer-events: none;
 }
