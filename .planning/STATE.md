@@ -83,10 +83,11 @@ None yet.
 |---|-------------|------|--------|-----------|
 | 260323-vrz | Personal Side gallery, page transitions, atmospheric backgrounds, content protection | 2026-03-23 | d4ec8c9 | [260323-vrz-personal-side-gallery-page-transitions-a](./quick/260323-vrz-personal-side-gallery-page-transitions-a/) |
 | 260323-vze | Rename Personal Side categories companions→pets, work→workspace; add 3 gallery items | 2026-03-23 | e3d3bcc, 78be202 | [260323-vze-personal-side-categorized-gallery-array-](./quick/260323-vze-personal-side-categorized-gallery-array-/) |
+| — | Fix: add Gallery to Navbar + Hero nav cards (Personal Side was unreachable) | 2026-03-23 | 1c48d30 | — |
 
 ## Session Continuity
 
 Last session: 2026-03-23T16:30:00.000Z
-Stopped at: Quick task 260323-vze complete
+Stopped at: Personal Side section now reachable via Navbar and HeroSection
 Last activity: 2026-03-23 - Completed quick task 260323-vze: Renamed Personal Side categories (companions→pets, work→workspace) and added 3 new gallery items
 Resume file: None
