@@ -382,6 +382,21 @@ export const siteConfig: SiteConfig = {
           image: "/gallery/workspace-3.png",
           caption: { en: "Late night debugging sessions", vi: "Phiên debug đêm khuya" },
         },
+        {
+          category: "nature",
+          image: "/gallery/nature-4.png",
+          caption: { en: "Sunlight filtering through the canopy", vi: "Ánh nắng xuyên qua tán lá" },
+        },
+        {
+          category: "pets",
+          image: "/gallery/pet-3.png",
+          caption: { en: "Curled up next to the keyboard", vi: "Cuộn tròn bên cạnh bàn phím" },
+        },
+        {
+          category: "workspace",
+          image: "/gallery/workspace-4.png",
+          caption: { en: "Setup evolution over the years", vi: "Sự tiến hóa của setup qua nhiều năm" },
+        },
       ],
     },
   },
