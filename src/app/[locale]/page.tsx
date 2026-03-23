@@ -26,9 +26,9 @@ const pageVariants = {
   },
   exit: {
     opacity: 0,
-    filter: "blur(12px)",
-    y: -10,
-    transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    filter: "blur(24px)",
+    y: -20,
+    transition: { duration: 0.7, ease: "easeInOut" as const },
   },
 };
 
