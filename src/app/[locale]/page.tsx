@@ -10,6 +10,7 @@ import { PersonalitySection } from "@/components/PersonalitySection";
 import { JourneySection } from "@/components/JourneySection";
 import { CompanionSection } from "@/components/CompanionSection";
 import { PersonalSideSection } from "@/components/PersonalSideSection";
+import { MapleLeafStorm } from "@/components/MapleLeafStorm";
 import type { Locale } from "@/config/i18n";
 
 const pageVariants = {
@@ -22,13 +23,15 @@ const pageVariants = {
     opacity: 1,
     filter: "blur(0px)",
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    transition: { duration: 0.5, delay: 0.45, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    // delay 0.45s = leaves start dispersing, new content fades in
   },
   exit: {
     opacity: 0,
-    filter: "blur(24px)",
-    y: -20,
-    transition: { duration: 0.7, ease: "easeInOut" as const },
+    filter: "blur(16px)",
+    y: -10,
+    transition: { duration: 0.35, ease: "easeInOut" as const },
+    // faster exit (0.35s) = content gone by 0.35s, well before leaf peak at 0.4s
   },
 };
 
@@ -66,6 +69,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen relative">
+      <MapleLeafStorm />
       <AnimatePresence mode="wait">
         <motion.div
           key={currentPage}
