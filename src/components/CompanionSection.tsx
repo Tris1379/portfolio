@@ -17,7 +17,7 @@ export function CompanionSection({ locale }: { locale: Locale }) {
   const config = getConfig(locale);
   const { navigateTo } = usePage();
   return (
-    <div className="min-h-screen pt-16 pb-8 atmosphere-section atmosphere-companion">
+    <div className="min-h-screen flex flex-col pt-16 pb-8 atmosphere-section atmosphere-companion">
       <div className="atmosphere-bg" style={{ backgroundImage: "url('/companion.png')" }} />
       {/* Lighthouse light beam */}
       <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
@@ -30,10 +30,10 @@ export function CompanionSection({ locale }: { locale: Locale }) {
           }}
         />
       </div>
-      <div className="relative z-10 max-w-2xl mx-auto px-4 md:px-8 py-16 text-center">
+      <div className="relative z-10 flex-1 flex flex-col justify-center max-w-2xl mx-auto px-4 md:px-8 py-12 w-full text-center">
         <button
           onClick={() => navigateTo("home")}
-          className="flex items-center gap-2 text-sm text-white/60 hover:text-(--color-primary) transition-colors mb-6 relative z-[9999]"
+          className="flex items-center gap-2 text-sm text-white/60 hover:text-(--color-primary) transition-colors mb-6 relative z-[9999] self-start"
         >
           <Home className="w-4 h-4" />
           Home
@@ -50,7 +50,7 @@ export function CompanionSection({ locale }: { locale: Locale }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          className="text-(--color-primary) text-lg mb-8"
+          className="text-(--color-primary) text-lg mb-6"
         >
           {config.sections.companion.subtitle}
         </motion.p>
@@ -58,9 +58,10 @@ export function CompanionSection({ locale }: { locale: Locale }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-          className="glass p-6 md:p-8 mb-8 card-scroll"
+          className="glass p-6 md:p-8 mb-6"
+          style={{ minHeight: "100px" }}
         >
-          <p className="text-(--color-text-secondary) text-lg leading-relaxed">
+          <p className="text-(--color-text-secondary) text-base md:text-lg leading-loose font-light tracking-wide">
             {config.sections.companion.message}
           </p>
         </motion.div>
@@ -68,10 +69,12 @@ export function CompanionSection({ locale }: { locale: Locale }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.35 }}
-          href={`mailto:${config.sections.companion.email}`}
-          className="inline-flex items-center gap-3 glass px-6 py-3 rounded-xl text-(--color-primary) hover:border-(--color-primary)/50 hover:shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.3),0_0_60px_rgba(var(--color-primary-rgb),0.12)] transition-all duration-300 hover:scale-105 mb-10"
+          href={config.sections.companion.ctaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3 glass px-6 py-3 rounded-xl text-(--color-primary) hover:border-(--color-primary)/50 hover:shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.3),0_0_60px_rgba(var(--color-primary-rgb),0.12)] transition-all duration-300 hover:scale-105 mb-8"
         >
-          <Mail className="w-5 h-5" />
+          <Facebook className="w-5 h-5" />
           <span className="font-medium">{config.sections.companion.cta}</span>
         </motion.a>
         <motion.div

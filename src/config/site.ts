@@ -80,6 +80,7 @@ export interface CompanionSection {
   subtitle: { en: string; vi: string };
   message: { en: string; vi: string };
   cta: { en: string; vi: string };
+  ctaUrl: string;
   email: string;
 }
 
@@ -342,6 +343,7 @@ export const siteConfig: SiteConfig = {
         en: "Start a Conversation",
         vi: "Bắt đầu cuộc trò chuyện",
       },
+      ctaUrl: "https://www.facebook.com/minh.tris0802",
       email: "kazuha@example.com",
     },
     personalSide: {

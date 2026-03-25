@@ -79,6 +79,7 @@ export function getConfig(locale: Locale) {
         subtitle: siteConfig.sections.companion.subtitle[locale],
         message: siteConfig.sections.companion.message[locale],
         cta: siteConfig.sections.companion.cta[locale],
+        ctaUrl: siteConfig.sections.companion.ctaUrl,
         email: siteConfig.sections.companion.email,
       },
       personalSide: {
