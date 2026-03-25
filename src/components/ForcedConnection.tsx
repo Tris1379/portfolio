@@ -153,11 +153,21 @@ export function ForcedConnectionPage({ locale }: { locale: Locale }) {
   const config = getConfig(locale);
   const { navigateTo } = usePage();
   const [stage, setStage] = useState<Stage>("question");
-  const [noPos, setNoPos] = useState({ x: 50, y: 50 });
+  const [noPos, setNoPos] = useState({ x: 70, y: 50 });
   const [yesPos, setYesPos] = useState<{ x: number; y: number } | null>(null);
   const [windParticles, setWindParticles] = useState<{ id: number; x: number; y: number }[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const particleIdRef = useRef(0);
+  const cursorRef = useRef({ x: 50, y: 50 });
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    cursorRef.current = {
+      x: ((e.clientX - rect.left) / rect.width) * 100,
+      y: ((e.clientY - rect.top) / rect.height) * 100,
+    };
+  }, []);
 
   const handleNoMouseEnter = useCallback(() => {
     if (!containerRef.current) return;
@@ -168,7 +178,9 @@ export function ForcedConnectionPage({ locale }: { locale: Locale }) {
     const newX = 10 + Math.random() * 80;
     const newY = 10 + Math.random() * 80;
     setNoPos({ x: newX, y: newY });
-    setYesPos({ x: 50, y: 50 });
+
+    // Yes always moves to cursor position
+    setYesPos({ x: cursorRef.current.x, y: cursorRef.current.y });
 
     setWindParticles((prev) => [
       ...prev,
@@ -220,7 +232,8 @@ export function ForcedConnectionPage({ locale }: { locale: Locale }) {
 
             <div
               ref={containerRef}
-              className="relative w-full max-w-lg h-[300px] mx-auto"
+              onMouseMove={handleMouseMove}
+              className="relative w-full max-w-xl h-[350px] mx-auto"
             >
               {/* Yes button */}
               <motion.button
@@ -228,7 +241,7 @@ export function ForcedConnectionPage({ locale }: { locale: Locale }) {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: 0.2 }}
                 onClick={handleYesClick}
-                className="glass px-8 py-3 rounded-full text-(--color-text-secondary) hover:text-(--color-primary) transition-colors cursor-pointer"
+                className="glass px-10 py-4 rounded-full text-(--color-text-secondary) hover:text-(--color-primary) transition-colors cursor-pointer"
                 style={
                   yesPos
                     ? {
@@ -241,14 +254,14 @@ export function ForcedConnectionPage({ locale }: { locale: Locale }) {
                       }
                     : {
                         position: "absolute",
-                        left: "35%",
+                        left: "30%",
                         top: "50%",
                         transform: "translate(-50%, -50%)",
                         zIndex: 5,
                       }
                 }
               >
-                <span className="text-sm font-light">{config.sections.forcedConnection.yesLabel}</span>
+                <span className="text-base font-light">{config.sections.forcedConnection.yesLabel}</span>
               </motion.button>
 
               {/* No button — dodges cursor */}
@@ -257,7 +270,7 @@ export function ForcedConnectionPage({ locale }: { locale: Locale }) {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: 0.35 }}
                 onMouseEnter={handleNoMouseEnter}
-                className="glass px-8 py-3 rounded-full text-(--color-text-secondary) transition-colors cursor-pointer"
+                className="glass px-10 py-4 rounded-full text-(--color-text-secondary) transition-colors cursor-pointer"
                 style={{
                   position: "absolute",
                   left: `${noPos.x}%`,
@@ -267,7 +280,7 @@ export function ForcedConnectionPage({ locale }: { locale: Locale }) {
                   zIndex: 5,
                 }}
               >
-                <span className="text-sm font-light">{config.sections.forcedConnection.noLabel}</span>
+                <span className="text-base font-light">{config.sections.forcedConnection.noLabel}</span>
               </motion.button>
 
               {/* Wind particles */}
