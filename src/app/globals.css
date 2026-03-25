@@ -17,6 +17,7 @@
   --z-particles: 0;
   --z-content: 10;
   --z-cards: 20;
+  --z-forced-connection: 30;
   --z-transition-particles: 40;
   --z-navbar: 50;
   --z-modal: 100;
@@ -138,6 +139,54 @@
   0%, 100% { opacity: 0.5; transform: rotate(-20deg); }
   50% { opacity: 0.8; transform: rotate(20deg); }
 }
+
+/* ===================== Music Player Animations ===================== */
+
+@keyframes spinLeaf {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes waveform1 {
+  0%, 100% { height: 20%; }
+  50% { height: 80%; }
+}
+
+@keyframes waveform2 {
+  0%, 100% { height: 50%; }
+  50% { height: 90%; }
+}
+
+@keyframes waveform3 {
+  0%, 100% { height: 30%; }
+  50% { height: 70%; }
+}
+
+@keyframes waveform4 {
+  0%, 100% { height: 60%; }
+  50% { height: 40%; }
+}
+
+@keyframes waveform5 {
+  0%, 100% { height: 25%; }
+  50% { height: 85%; }
+}
+
+.spin-leaf {
+  animation: spinLeaf 3s linear infinite;
+}
+
+.waveform-bar {
+  width: 3px;
+  border-radius: 9999px;
+  background: rgba(var(--color-primary-rgb), 0.8);
+}
+
+.waveform-bar:nth-child(1) { animation: waveform1 0.8s ease-in-out infinite; }
+.waveform-bar:nth-child(2) { animation: waveform2 0.6s ease-in-out infinite 0.1s; }
+.waveform-bar:nth-child(3) { animation: waveform3 0.7s ease-in-out infinite 0.2s; }
+.waveform-bar:nth-child(4) { animation: waveform4 0.5s ease-in-out infinite 0.15s; }
+.waveform-bar:nth-child(5) { animation: waveform5 0.9s ease-in-out infinite 0.05s; }
 
 /* ===================== Section Background Base ===================== */
 
@@ -285,4 +334,139 @@
   transform-origin: 50% 100%;
   z-index: 2;
   pointer-events: none;
+}
+
+/* ===================== Hero — Gentle Glow Overlay ===================== */
+
+.atmosphere-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(168, 230, 207, 0.12), transparent),
+    radial-gradient(circle 300px at 30% 70%, rgba(100, 180, 220, 0.08), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ===================== Gallery — Soft Ambient Overlay ===================== */
+
+.atmosphere-gallery::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 60% 30%, rgba(200, 160, 255, 0.1), transparent),
+    radial-gradient(circle 250px at 40% 80%, rgba(168, 230, 207, 0.08), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ===================== Forced Connection — Wind Trail ===================== */
+
+@keyframes leafGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.3), 0 0 30px rgba(var(--color-primary-rgb), 0.1); }
+  50% { box-shadow: 0 0 25px rgba(var(--color-primary-rgb), 0.5), 0 0 50px rgba(var(--color-primary-rgb), 0.2); }
+}
+
+@keyframes windTrail {
+  0% { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(1); }
+  100% { opacity: 0; transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(0.3); }
+}
+
+.wind-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ===================== Glitch Effect for MBTI ===================== */
+
+.glitch-char {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.05s;
+}
+
+.glitch-char::before,
+.glitch-char::after {
+  content: attr(data-char);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glitch-char.glitching {
+  animation: glitch-clip 0.1s steps(5) infinite, glitch-skew 0.1s steps(3) infinite;
+  filter: blur(1px) brightness(1.2);
+}
+
+.glitch-char[data-phase="toE"] {
+  animation: glitch-clip 0.08s steps(5) infinite, glitch-skew 0.08s steps(3) infinite;
+  filter: blur(1.5px) brightness(1.3);
+  transform: translateX(2px);
+}
+
+.glitch-char[data-phase="backToI"] {
+  animation: glitch-clip 0.12s steps(4) infinite, glitch-skew 0.12s steps(3) infinite;
+  filter: blur(0.5px) brightness(1.1);
+  transform: translateX(-1px);
+}
+
+.glitch-char.glitching::before {
+  color: #a8e6cf; /* Teal */
+  opacity: 0.9;
+  animation: glitch-rgb-left 0.1s steps(4) infinite;
+  mix-blend-mode: screen;
+}
+
+.glitch-char.glitching::after {
+  color: #d64d2e; /* Orange */
+  opacity: 0.9;
+  animation: glitch-rgb-right 0.1s steps(4) infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes glitch-clip {
+  0% { clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%); }
+  10% { clip-path: polygon(0 15%, 100% 15%, 100% 35%, 0 35%); }
+  20% { clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%); }
+  30% { clip-path: polygon(0 45%, 100% 45%, 100% 65%, 0 65%); }
+  40% { clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%); }
+  50% { clip-path: polygon(0 75%, 100% 75%, 100% 95%, 0 95%); }
+  60% { clip-path: polygon(0 85%, 100% 85%, 100% 10%, 0 10%); }
+  70% { clip-path: polygon(0 5%, 100% 5%, 100% 25%, 0 25%); }
+  80% { clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%); }
+  90% { clip-path: polygon(0 35%, 100% 35%, 100% 55%, 0 55%); }
+  100% { clip-path: polygon(0 50%, 100% 50%, 100% 70%, 0 70%); }
+}
+
+@keyframes glitch-skew {
+  0% { transform: skewX(0deg); }
+  25% { transform: skewX(10deg); }
+  50% { transform: skewX(-5deg); }
+  75% { transform: skewX(8deg); }
+  100% { transform: skewX(0deg); }
+}
+
+@keyframes glitch-rgb-left {
+  0% { transform: translate(-3px, 1px) scaleX(1.05); }
+  25% { transform: translate(2px, -1px) scaleX(0.95); }
+  50% { transform: translate(-1px, 2px) scaleX(1.02); }
+  75% { transform: translate(3px, -2px) scaleX(0.98); }
+  100% { transform: translate(-2px, 0px) scaleX(1.01); }
+}
+
+@keyframes glitch-rgb-right {
+  0% { transform: translate(3px, -1px) scaleX(0.95); }
+  25% { transform: translate(-2px, 1px) scaleX(1.05); }
+  50% { transform: translate(1px, -2px) scaleX(0.98); }
+  75% { transform: translate(-3px, 2px) scaleX(1.02); }
+  100% { transform: translate(2px, 0px) scaleX(0.99); }
 }
