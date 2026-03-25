@@ -86,7 +86,7 @@ None yet.
 | 260323-vze | Rename Personal Side categories companions→pets, work→workspace; add 3 gallery items | 2026-03-23 | e3d3bcc, 78be202 | [260323-vze-personal-side-categorized-gallery-array-](./quick/260323-vze-personal-side-categorized-gallery-array-/) |
 | — | Fix: add Gallery to Navbar + Hero nav cards (Personal Side was unreachable) | 2026-03-23 | 1c48d30 | — |
 | 260324-b49 | Cinematic maple leaf storm page transition with depth-of-field | 2026-03-24 | dba4e76, fc4ce25 | [260324-b49-implement-cinematic-maple-leaf-storm-pag](./quick/260324-b49-implement-cinematic-maple-leaf-storm-pag/) |
-| 260325-uf1 | Forced connection interaction with dodging No button + golden leaf shower | 2026-03-25 | 62a231c, 612d123, ba97707 | [260325-uf1-implement-forced-connection-interaction-](./quick/260325-uf1-implement-forced-connection-interaction-/) |
+| 260325-uf1 | Forced connection — separate page with dodging No button + golden leaf shower | 2026-03-25 | 62a231c, 612d123, ba97707, 870beea | [260325-uf1-implement-forced-connection-interaction-](./quick/260325-uf1-implement-forced-connection-interaction-/) |
 
 ## Session Continuity
 
