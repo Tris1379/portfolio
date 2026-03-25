@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Leaf } from "lucide-react";
 import { usePage } from "@/components/PageContext";
@@ -8,9 +8,8 @@ import { getConfig } from "@/config/i18n";
 import type { Locale } from "@/config/i18n";
 import type { ISourceOptions } from "@tsparticles/engine";
 
-type Stage = "idle" | "question" | "celebrating";
+type Stage = "question" | "celebrating";
 
-// Wind particle component for button swap effect
 function WindParticle({ index, origin }: { index: number; origin: { x: number; y: number } }) {
   const angle = (index / 6) * 360 + Math.random() * 60;
   const dist = 40 + Math.random() * 60;
@@ -31,7 +30,6 @@ function WindParticle({ index, origin }: { index: number; origin: { x: number; y
   );
 }
 
-// Golden leaf shower using tsParticles
 function GoldenShower({ onComplete }: { onComplete: () => void }) {
   const [ParticlesComp, setParticlesComp] = useState<React.ComponentType<{
     id: string;
@@ -151,10 +149,10 @@ function GoldenShower({ onComplete }: { onComplete: () => void }) {
   );
 }
 
-export function ForcedConnection({ locale }: { locale: Locale }) {
+export function ForcedConnectionPage({ locale }: { locale: Locale }) {
   const config = getConfig(locale);
   const { navigateTo } = usePage();
-  const [stage, setStage] = useState<Stage>("idle");
+  const [stage, setStage] = useState<Stage>("question");
   const [noPos, setNoPos] = useState({ x: 50, y: 50 });
   const [yesPos, setYesPos] = useState<{ x: number; y: number } | null>(null);
   const [windParticles, setWindParticles] = useState<{ id: number; x: number; y: number }[]>([]);
@@ -163,24 +161,25 @@ export function ForcedConnection({ locale }: { locale: Locale }) {
 
   const handleNoMouseEnter = useCallback(() => {
     if (!containerRef.current) return;
-    // Random position within bounds (10-90% to keep visible)
+    const rect = containerRef.current.getBoundingClientRect();
+    const prevX = (noPos.x / 100) * rect.width;
+    const prevY = (noPos.y / 100) * rect.height;
+
     const newX = 10 + Math.random() * 80;
     const newY = 10 + Math.random() * 80;
     setNoPos({ x: newX, y: newY });
-    // Yes teleports to center of container
     setYesPos({ x: 50, y: 50 });
-    // Spawn wind particles at the No button's previous position
+
     setWindParticles((prev) => [
       ...prev,
       ...Array.from({ length: 6 }, () => ({
         id: particleIdRef.current++,
-        x: (noPos.x / 100) * (containerRef.current?.offsetWidth || 300),
-        y: (noPos.y / 100) * (containerRef.current?.offsetHeight || 120),
+        x: prevX,
+        y: prevY,
       })),
     ]);
   }, [noPos.x, noPos.y]);
 
-  // Clean up old wind particles
   useEffect(() => {
     if (windParticles.length > 0) {
       const timer = setTimeout(() => setWindParticles([]), 700);
@@ -197,26 +196,9 @@ export function ForcedConnection({ locale }: { locale: Locale }) {
   }, [navigateTo]);
 
   return (
-    <div className="relative w-full flex flex-col items-center py-8">
+    <div className="min-h-screen flex flex-col items-center justify-center atmosphere-section atmosphere-journey">
+      <div className="atmosphere-bg" style={{ backgroundImage: "url('/journey.png')" }} />
       <AnimatePresence mode="wait">
-        {/* Idle stage: glowing Next button */}
-        {stage === "idle" && (
-          <motion.button
-            key="next-btn"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            onClick={() => setStage("question")}
-            className="glass flex items-center gap-2 px-6 py-3 rounded-full text-(--color-text-secondary) hover:text-(--color-primary) transition-colors cursor-pointer"
-            style={{ animation: "leafGlow 2s ease-in-out infinite" }}
-          >
-            <Leaf className="w-4 h-4 text-(--color-primary) spin-leaf" />
-            <span className="text-sm font-light">{config.sections.forcedConnection.nextLabel}</span>
-          </motion.button>
-        )}
-
-        {/* Question stage: text + Yes/No buttons */}
         {stage === "question" && (
           <motion.div
             key="question-screen"
@@ -224,22 +206,21 @@ export function ForcedConnection({ locale }: { locale: Locale }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col items-center gap-6 w-full"
+            className="relative z-10 flex flex-col items-center w-full px-4"
           >
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="font-[family-name:var(--font-display)] text-2xl md:text-3xl text-center text-white"
+              className="font-[family-name:var(--font-display)] text-2xl md:text-4xl text-center text-white mb-16"
               style={{ textShadow: "0 2px 12px rgba(0,0,0,0.6)" }}
             >
               {config.sections.forcedConnection.question}
             </motion.h2>
 
-            {/* Button container with absolute positioning for dodging */}
             <div
               ref={containerRef}
-              className="relative w-full h-[120px] overflow-hidden"
+              className="relative w-full max-w-lg h-[300px] mx-auto"
             >
               {/* Yes button */}
               <motion.button
@@ -247,7 +228,7 @@ export function ForcedConnection({ locale }: { locale: Locale }) {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: 0.2 }}
                 onClick={handleYesClick}
-                className="glass px-6 py-3 rounded-full text-(--color-text-secondary) hover:text-(--color-primary) transition-colors cursor-pointer"
+                className="glass px-8 py-3 rounded-full text-(--color-text-secondary) hover:text-(--color-primary) transition-colors cursor-pointer"
                 style={
                   yesPos
                     ? {
@@ -259,11 +240,10 @@ export function ForcedConnection({ locale }: { locale: Locale }) {
                         zIndex: 5,
                       }
                     : {
-                        position: "relative",
-                        margin: "0 auto",
-                        display: "flex",
-                        left: "50%",
-                        transform: "translateX(-50%)",
+                        position: "absolute",
+                        left: "35%",
+                        top: "50%",
+                        transform: "translate(-50%, -50%)",
                         zIndex: 5,
                       }
                 }
@@ -277,7 +257,7 @@ export function ForcedConnection({ locale }: { locale: Locale }) {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: 0.35 }}
                 onMouseEnter={handleNoMouseEnter}
-                className="glass px-6 py-3 rounded-full text-(--color-text-secondary) transition-colors cursor-pointer"
+                className="glass px-8 py-3 rounded-full text-(--color-text-secondary) transition-colors cursor-pointer"
                 style={{
                   position: "absolute",
                   left: `${noPos.x}%`,
@@ -298,7 +278,6 @@ export function ForcedConnection({ locale }: { locale: Locale }) {
           </motion.div>
         )}
 
-        {/* Celebrating stage: golden leaf shower */}
         {stage === "celebrating" && (
           <GoldenShower key="golden" onComplete={handleCelebrationComplete} />
         )}

@@ -324,9 +324,9 @@ export const siteConfig: SiteConfig = {
     },
     forcedConnection: {
       question: { en: "Would you like to journey with me?", vi: "Bạn có muốn đồng hành cùng tôi không?" },
-      yesLabel: { en: "Có / Yes", vi: "Có / Yes" },
-      noLabel: { en: "Không / No", vi: "Không / No" },
-      nextLabel: { en: "Tiếp theo / Next", vi: "Tiếp theo / Next" },
+      yesLabel: { en: "Yes", vi: "Có" },
+      noLabel: { en: "No", vi: "Không" },
+      nextLabel: { en: "Next", vi: "Tiếp theo" },
     },
     companion: {
       title: { en: "Companion", vi: "Đồng hành" },
@@ -335,8 +335,8 @@ export const siteConfig: SiteConfig = {
         vi: "Nơi những hành trình giao thoa",
       },
       message: {
-        en: "I'm not looking for a quick project or a short-term role. I'm looking for someone — who values depth over speed, integrity over convenience, and growth over comfort. If that resonates, let's talk.",
-        vi: "Tôi không tìm kiếm dự án ngắn hạn hay vai trò tạm thời. Tôi đang tìm một người — coi trọng chiều sâu hơn tốc độ, sự chính trực hơn sự tiện lợi, và sự phát triển hơn sự thoải mái. Nếu điều này cộng hưởng, hãy trò chuyện.",
+        en: "I am not merely seeking casual social ties. I am searching for a companion — someone who values depth over speed, integrity over convenience, and growth over comfort. If this resonance speaks to you, or if you aspire to redefine yourself, reach out. Let’s connect. :)",
+        vi: "Tôi không chỉ đơn giản là tìm kiếm bạn bè xã giao. Tôi đang tìm một người đồng hành — coi trọng chiều sâu hơn tốc độ, sự chính trực hơn sự tiện lợi, và sự phát triển hơn sự thoải mái. Nếu tần số này cộng hưởng, hay bạn muốn thay đổi bản thân. Hãy nhắn cho tôi, chúng ta có thể làm quen :)",
       },
       cta: {
         en: "Start a Conversation",

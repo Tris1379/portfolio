@@ -5,7 +5,6 @@ import type { Locale } from "@/config/i18n";
 import { motion } from "framer-motion";
 import { usePage } from "@/components/PageContext";
 import { Home, Leaf } from "lucide-react";
-import { ForcedConnection } from "@/components/ForcedConnection";
 
 export function JourneySection({ locale }: { locale: Locale }) {
   const config = getConfig(locale);
@@ -49,7 +48,7 @@ export function JourneySection({ locale }: { locale: Locale }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="flex flex-wrap justify-center gap-3"
+          className="flex flex-wrap justify-center gap-3 mb-12"
         >
           {config.sections.journey.lessons.map((lesson, index) => (
             <motion.div
@@ -66,7 +65,21 @@ export function JourneySection({ locale }: { locale: Locale }) {
             </motion.div>
           ))}
         </motion.div>
-        <ForcedConnection locale={locale} />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1 }}
+          className="flex justify-center"
+        >
+          <button
+            onClick={() => navigateTo("forcedConnection")}
+            className="glass flex items-center gap-2 px-6 py-3 rounded-full text-(--color-text-secondary) hover:text-(--color-primary) transition-colors cursor-pointer"
+            style={{ animation: "leafGlow 2s ease-in-out infinite" }}
+          >
+            <Leaf className="w-4 h-4 text-(--color-primary) spin-leaf" />
+            <span className="text-sm font-light">{config.sections.forcedConnection.nextLabel}</span>
+          </button>
+        </motion.div>
       </div>
     </div>
   );

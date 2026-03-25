@@ -2,54 +2,76 @@
 
 import { createContext, useContext, useState, useCallback, useEffect, useRef } from "react";
 
-export type PageId = "home" | "vision" | "personality" | "journey" | "companion" | "personal";
+export type PageId = "home" | "vision" | "about" | "journey" | "forcedConnection" | "companion" | "personal";
+
+export const PAGE_ORDER: PageId[] = ["home", "vision", "about", "journey", "forcedConnection", "companion", "personal"];
 
 interface PageContextValue {
   currentPage: PageId;
   navigateTo: (page: PageId) => void;
   isTransitioning: boolean;
+  showLeafStorm: boolean;
+  windDirection: 1 | -1;
 }
 
 const PageContext = createContext<PageContextValue>({
   currentPage: "home",
   navigateTo: () => {},
   isTransitioning: false,
+  showLeafStorm: false,
+  windDirection: 1,
 });
 
 export function PageProvider({ children }: { children: React.ReactNode }) {
   const [currentPage, setCurrentPage] = useState<PageId>("home");
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const transitionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const postSwitchTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [showLeafStorm, setShowLeafStorm] = useState(false);
+  const [windDirection, setWindDirection] = useState<1 | -1>(1);
+  const pendingPage = useRef<PageId | null>(null);
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  const clearTimers = useCallback(() => {
+    timers.current.forEach(clearTimeout);
+    timers.current = [];
+  }, []);
 
   const navigateTo = useCallback((page: PageId) => {
-    // Clear any pending timers from a previous rapid navigation
-    if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
-    if (postSwitchTimerRef.current) clearTimeout(postSwitchTimerRef.current);
+    if (page === currentPage || isTransitioning) return;
 
+    clearTimers();
+
+    const currIdx = PAGE_ORDER.indexOf(currentPage);
+    const nextIdx = PAGE_ORDER.indexOf(page);
+    const dir: 1 | -1 = nextIdx > currIdx ? 1 : -1;
+
+    setWindDirection(dir);
     setIsTransitioning(true);
+    setShowLeafStorm(true);
+    pendingPage.current = page;
 
-    // Delay actual page switch to ~400ms (peak leaf density)
-    transitionTimerRef.current = setTimeout(() => {
-      setCurrentPage(page);
-    }, 400);
+    // Leaves arrive first (push illusion), content swaps at peak density
+    timers.current.push(
+      setTimeout(() => {
+        setCurrentPage(page);
+        pendingPage.current = null;
+      }, 400)
+    );
 
-    // Reset isTransitioning after 900ms total (storm disperses)
-    postSwitchTimerRef.current = setTimeout(() => {
-      setIsTransitioning(false);
-    }, 900);
-  }, []);
+    // Storm disperses
+    timers.current.push(
+      setTimeout(() => {
+        setShowLeafStorm(false);
+        setIsTransitioning(false);
+      }, 900)
+    );
+  }, [currentPage, isTransitioning, clearTimers]);
 
-  // Cleanup timers on unmount
   useEffect(() => {
-    return () => {
-      if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
-      if (postSwitchTimerRef.current) clearTimeout(postSwitchTimerRef.current);
-    };
-  }, []);
+    return () => clearTimers();
+  }, [clearTimers]);
 
   return (
-    <PageContext.Provider value={{ currentPage, navigateTo, isTransitioning }}>
+    <PageContext.Provider value={{ currentPage, navigateTo, isTransitioning, showLeafStorm, windDirection }}>
       {children}
     </PageContext.Provider>
   );
