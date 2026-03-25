@@ -47,13 +47,19 @@ export function getConfig(locale: Locale) {
           (p) => p[locale]
         ),
       },
-      personality: {
-        title: siteConfig.sections.personality.title[locale],
-        mbti: siteConfig.sections.personality.mbti,
-        traits: siteConfig.sections.personality.traits.map((t) => ({
-          name: t.name[locale],
-          description: t.description[locale],
-        })),
+      aboutMe: {
+        title: siteConfig.sections.aboutMe.title[locale],
+        info: {
+          name: siteConfig.sections.aboutMe.info.name[locale],
+          nickname: siteConfig.sections.aboutMe.info.nickname[locale],
+          dob: siteConfig.sections.aboutMe.info.dob[locale],
+          nationality: siteConfig.sections.aboutMe.info.nationality[locale],
+          school: siteConfig.sections.aboutMe.info.school[locale],
+          personality: siteConfig.sections.aboutMe.info.personality[locale],
+        },
+        likes: siteConfig.sections.aboutMe.likes[locale],
+        dislikes: siteConfig.sections.aboutMe.dislikes[locale],
+        aspiration: siteConfig.sections.aboutMe.aspiration[locale],
       },
       journey: {
         title: siteConfig.sections.journey.title[locale],
@@ -61,6 +67,12 @@ export function getConfig(locale: Locale) {
           (p) => p[locale]
         ),
         lessons: siteConfig.sections.journey.lessons.map((l) => l[locale]),
+      },
+      forcedConnection: {
+        question: siteConfig.sections.forcedConnection.question[locale],
+        yesLabel: siteConfig.sections.forcedConnection.yesLabel[locale],
+        noLabel: siteConfig.sections.forcedConnection.noLabel[locale],
+        nextLabel: siteConfig.sections.forcedConnection.nextLabel[locale],
       },
       companion: {
         title: siteConfig.sections.companion.title[locale],

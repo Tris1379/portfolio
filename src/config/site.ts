@@ -44,13 +44,19 @@ export interface VisionSection {
   paragraphs: { en: string; vi: string }[];
 }
 
-export interface PersonalitySection {
+export interface AboutMeSection {
   title: { en: string; vi: string };
-  mbti: string;
-  traits: {
+  info: {
     name: { en: string; vi: string };
-    description: { en: string; vi: string };
-  }[];
+    nickname: { en: string; vi: string };
+    dob: { en: string; vi: string };
+    nationality: { en: string; vi: string };
+    school: { en: string; vi: string };
+    personality: { en: string; vi: string };
+  };
+  likes: { en: string[]; vi: string[] };
+  dislikes: { en: string[]; vi: string[] };
+  aspiration: { en: string; vi: string };
 }
 
 export interface JourneySection {
@@ -60,6 +66,13 @@ export interface JourneySection {
     en: string;
     vi: string;
   }[];
+}
+
+export interface ForcedConnectionSection {
+  question: { en: string; vi: string };
+  yesLabel: { en: string; vi: string };
+  noLabel: { en: string; vi: string };
+  nextLabel: { en: string; vi: string };
 }
 
 export interface CompanionSection {
@@ -91,6 +104,15 @@ export interface ParticlesConfig {
   mobileParticles: number;
 }
 
+export interface MusicTrack {
+  title: string;       // NOT translated — song titles stay as-is
+  src: string;         // path relative to /public
+}
+
+export interface MusicConfig {
+  tracks: MusicTrack[];
+}
+
 export interface SiteConfig {
   name: string;  // "Kazuha" — proper noun, stays string
   title: { en: string; vi: string };
@@ -102,46 +124,48 @@ export interface SiteConfig {
     gallery: GallerySection;
     values: ValuesSection;
     vision: VisionSection;
-    personality: PersonalitySection;
+    aboutMe: AboutMeSection;
     journey: JourneySection;
+    forcedConnection: ForcedConnectionSection;
     companion: CompanionSection;
     personalSide: PersonalSideSection;
   };
   particles: ParticlesConfig;
+  music: MusicConfig;
 }
 
 export const siteConfig: SiteConfig = {
-  name: "Kazuha",
+  name: "Ming Tris",
   title: {
-    en: "Information Security Professional",
-    vi: "Chuyên gia An toàn Thông tin",
+    en: "Cybersecurity University Student",
+    vi: "Sinh viên An toàn Thông tin",
   },
   bio: {
-    en: "Protecting digital landscapes with the calm precision of a wanderer through wind and leaves.",
-    vi: "Bảo vệ thế giới số với sự điềm tĩnh tinh tế của kẻ lữ hành qua gió và lá.",
+    en: "Do not let the breeze of comfort carry away your dreams.",
+    vi: "Đừng để sự thoải mái cuốn trôi giấc mơ của bạn",
   },
   social: [
     {
       platform: "github",
-      url: "https://github.com/kazuha",
+      url: "https://github.com/Tris1379",
       label: { en: "GitHub", vi: "GitHub" },
       icon: "github",
     },
     {
       platform: "facebook",
-      url: "https://facebook.com/kazuha",
+      url: "https://www.facebook.com/minh.tris0802",
       label: { en: "Facebook", vi: "Facebook" },
       icon: "facebook",
     },
     {
       platform: "discord",
-      url: "https://discord.com/users/kazuha",
+      url: "https://discord.com/users/773546988707905547",
       label: { en: "Discord", vi: "Discord" },
       icon: "discord",
     },
     {
       platform: "email",
-      url: "mailto:kazuha@example.com",
+      url: "mailto:lilhorni0829@gmail.com",
       label: { en: "Email", vi: "Email" },
       icon: "mail",
     },
@@ -152,7 +176,7 @@ export const siteConfig: SiteConfig = {
       paragraphs: [
         {
           en: "Like the wanderer Kazuha, I move through the digital world with purpose and calm. My journey into Information Security began with curiosity about how systems work — and how they break.",
-          vi: "Như Kazuha lang thang, tôi bước qua thế giới số với mục đích và điềm tĩnh. Hành trình vào An toàn Thông tin bắt đầu từ sự tò mò về cách hệ thống hoạt động — và cách chúng bị phá vỡ.",
+          vi: "Tôi trân trọng sự tự do và nhàn hạ, và đó chính là lý do tôi chọn sự đau khổ của kỷ luật khi còn trẻ. Tôi rèn luyện hôm nay để có thể tận hưởng cuộc sống một cách trọn vẹn nhất sau này, thay vì phải đối mặt với sự ân hận khi về già. ",
         },
         {
           en: "Every vulnerability I find, every system I protect, is guided by the same principle: understand deeply, act precisely, and always leave things better than you found them.",
@@ -226,98 +250,93 @@ export const siteConfig: SiteConfig = {
     vision: {
       title: { en: "The Vision", vi: "Tầm nhìn" },
       subtitle: {
-        en: "Why I Do This",
-        vi: "Tại sao tôi làm điều này",
+        en: "My ideal of life",
+        vi: "Lý tưởng sống của tôi",
       },
       paragraphs: [
         {
-          en: "Security is not about building walls. It's about understanding the landscape so deeply that you can walk through any terrain — and guide others safely through it.",
-          vi: "Bảo mật không phải xây tường. Đó là hiểu địa hình sâu sắc đến mức bạn có thể đi qua bất kỳ địa hình nào — và dẫn người khác đi an toàn.",
+          en: "The wind only calms when the storm has passed, and peace truly exists only when we have walked through the fiercest gales...",
+          vi: "Gió chỉ lặng khi bão đã tan, và bình yên chỉ thực sự hiện hữu khi ta đã đi xuyên qua những ngày giông bão nhất...",
         },
         {
-          en: "I don't chase threats for the thrill. I study them because understanding how things break is the only way to build something that lasts.",
-          vi: "Tôi không theo đuổi mối đe dọa vì cảm giác mạnh. Tôi nghiên cứu chúng vì hiểu cách mọi thứ bị phá vỡ là cách duy nhất để xây dựng thứ gì đó bền vững.",
+          en: "A wanderer fears not the abyss as a destination, but a journey that leaves no echo in this world. I do not fear death; I only fear wandering through life without meaning. Instead of fading like nameless dust, I choose to venture forth, ensuring every 'slash' that carves my resolve bears witness to my existence. I would rather brave the storm to grasp my ideals than drift through a life of silent aimlessness",
+          vi: "Tôi không sợ đích đến là vực thẳm, chỉ sợ bước chân đi mà chẳng để lại dấu ấn gì cho đời. Tôi không sợ cái chết, tôi chỉ sợ lang thang trong đời mà không có ý nghĩa. Thay vì tan biến như một hạt bụi, tôi chọn dấn thân để mỗi 'nhát chém' tạc nên ý chí của tôi sẽ trở thành minh chứng cho sự tồn tại của chính mình. Tôi thà kiên cường đi xuyên qua bão tố để chạm đến lý tưởng, còn hơn sống một đời lặng lẽ mà vô định.",
         },
         {
-          en: "My vision is a digital world where security is woven into the foundation — not bolted on as an afterthought.",
-          vi: "Tầm nhìn của tôi là một thế giới số nơi bảo mật được dệt vào nền tảng — không phải gắn thêm như suy nghĩ sau cùng.",
+          en: "Humanity would perish if people ceased to help one another. We cannot exist without mutual support. Therefore, all who need assistance have the right to seek it from others; and no one capable of helping can refuse without a sense of remorse",
+          vi: "Loài người sẽ diệt vong nếu con người ngừng giúp đỡ lẫn nhau. Chúng ta không thể tồn tại mà không hỗ trợ lẫn nhau. Và do đó tất cả những người cần trợ giúp có quyền đi tìm sự giúp đỡ từ người khác; và không ai có khả năng giúp đỡ lại có thể từ chối mà không thấy cắn rứt.",
         },
       ],
     },
-    personality: {
-      title: { en: "Personality", vi: "Tính cách" },
-      mbti: "INFJ-A",
-      traits: [
-        {
-          name: { en: "The Advocate", vi: "Nhà ủng hộ" },
-          description: {
-            en: "Quiet but determined. I see patterns others miss and pursue solutions with relentless patience.",
-            vi: "Ít nói nhưng kiên quyết. Tôi thấy những mô hình người khác bỏ qua và theo đuổi giải pháp với sự kiên nhẫn không ngừng.",
-          },
-        },
-        {
-          name: { en: "Strategic Thinker", vi: "Nhà tư duy chiến lược" },
-          description: {
-            en: "I don't start coding until I've mapped the entire attack surface. Planning is 80% of the work.",
-            vi: "Tôi không bắt đầu viết code cho đến khi đã vẽ bản đồ toàn bộ bề mặt tấn công. Lên kế hoạch chiếm 80% công việc.",
-          },
-        },
-        {
-          name: { en: "Calm Under Pressure", vi: "Điềm tĩnh dưới áp lực" },
-          description: {
-            en: "Incident response at 3 AM? No panic. Just methodical, focused execution until the threat is contained.",
-            vi: "Xử lý sự cố lúc 3 giờ sáng? Không hoảng loạn. Chỉ cần thực thi có phương pháp, tập trung cho đến khi mối đe dọa được kiểm soát.",
-          },
-        },
-        {
-          name: { en: "Lifelong Learner", vi: "Người học suốt đời" },
-          description: {
-            en: "The threat landscape evolves daily. Standing still is falling behind.",
-            vi: "Mối đe dọa phát triển hàng ngày. Đứng yên là tụt lại phía sau.",
-          },
-        },
-      ],
+    aboutMe: {
+      title: { en: "About Me", vi: "Về tôi" },
+      info: {
+        name: { en: "Pham Minh Tri", vi: "Phạm Minh Trí" },
+        nickname: { en: "Tris", vi: "Tris" },
+        dob: { en: "08/02/200*", vi: "08/02/200*" },
+        nationality: { en: "Vietnam", vi: "Việt Nam" },
+        school: { en: "University of Information Technology - VNUHCM", vi: "Đại Học Công nghệ Thông tin - ĐHQG TP.HCM" },
+        personality: { en: "INTJ-A", vi: "INTJ-A" },
+      },
+      likes: {
+        en: ["Helping each other <3", "Experience new things", "Admire all the beauty ( Arts & Life )", "Books & Sports", "Analyzing & solving problems"],
+        vi: ["Giúp đỡ người khác <3", "Trải nghiệm những điều mới", "Chiêm ngưỡng mọi vẻ đẹp ( Nghệ thuật & Cuộc sống )", "Sách & Thể thao", "Phân tích & giải quyết vấn đề"],
+      },
+      dislikes: {
+        en: ["Carelessness", "Superficial solutions", "Unnecessary complexity","Hypocrisy & Pettiness"],
+        vi: ["Sự cẩu thả", "Giải pháp hời hợt", "Sự phức tạp không cần thiết", "Sự giả tạo & tính tiểu nhân"],
+      },
+      aspiration: {
+        en: "I aspire to embody the virtues of a 'Quân tử' (Noble Man) — constantly refining my soul and relentlessly moving forward with the ideal of serving others. My ultimate goal is to leverage my knowledge to protect and uplift the community, contributing to a prosperous and digitally resilient Vietnam.",
+        vi: "Tôi hướng mình theo phong thái của một bậc quân tử — người bền bỉ hoàn thiện bản thân và không ngừng tiến bước với lý tưởng phụng sự cộng đồng. Khát vọng lớn nhất của tôi là dùng tri thức để bảo vệ và giúp đỡ mọi người, góp phần xây dựng một Việt Nam giàu mạnh.",
+      },
     },
     journey: {
       title: { en: "The Journey", vi: "Hành trình" },
       paragraphs: [
         {
-          en: "I didn't start in security. I started by breaking my own computer at 15 — trying to install a 'cool' Linux distro and wiping the boot partition. That panic taught me more about systems than any textbook.",
-          vi: "Tôi không bắt đầu với bảo mật. Tôi bắt đầu bằng cách phá hỏng máy tính của mình năm 15 tuổi — cố cài một bản Linux 'ngầu' và xóa phân vùng khởi động. Sự hoảng loạn đó dạy tôi về hệ thống nhiều hơn bất kỳ cuốn sách nào.",
+          en: "There was once a time when I was merely a faint shadow amidst the currents of life. Without ideals or a destination, I allowed myself to sink into a hollow loop of 'eat, sleep, play, and study.' Those days were so grey and blurred that I could barely remember why I existed or how I lived; I felt nothing... except for a suffocating boredom that haunted every corner of my soul.",
+          vi: "Đã từng có một khoảng thời gian, tôi chỉ là một cái bóng nhạt nhòa giữa dòng đời. Không lý tưởng, không đích đến, tôi để mặc bản thân chìm nghỉm trong vòng lặp vô vị của 'ăn, ngủ, chơi và học'. Những ngày tháng ấy xám xịt lu mờ đến mức tôi chẳng thể nhớ nổi mình đã tồn tại vì điều gì, đã sống như thế nào, chẳng cảm nhận được gì... ngoài cảm giác chán nản bủa vây mọi ngóc ngách của tâm hồn.",
         },
         {
-          en: "Every certification I earned came after failures I don't post about. The OSCP took two attempts. The first homelab caught fire (figuratively). Each failure was a lesson in humility and persistence.",
-          vi: "Mỗi chứng chỉ tôi đạt được đều đến sau những thất bại tôi không đăng tải. OSCP mất hai lần thử. Homelab đầu tiên 'cháy' (nghĩa bóng). Mỗi thất bại là một bài học về sự khiêm tốn và kiên trì.",
+          en: "But within that deep abyss, I suddenly heard the call of my true self—painful yet profound questions of self-reflection: 'What am I living for?'; 'Is my youth meant to be nothing more than this?'; 'What is true peace, and what price must I pay to touch it?' Those very questions became the slash that tore through the mist, leading me on a quest for my own answers.",
+          vi: "Nhưng giữa vực thẳm sâu hút đó, tôi chợt nghe thấy tiếng gọi của bản ngã, những câu hỏi tự vấn đầy đớn đau nhưng sâu sắc: 'Mình đang sống vì điều gì?'; 'Lẽ nào tuổi trẻ của mình chỉ như vậy thôi sao ?'; 'Bình yên thực sự là gì, và tôi phải trả giá bao nhiêu để chạm vào nó?'. Chính những câu hỏi ấy đã trở thành nhát chém xé toạc màn sương, đưa tôi đi tìm câu trả lời cho riêng mình.",
         },
         {
-          en: "Today, I protect systems that matter. Not because I'm special — but because I never stopped being curious, and I never stopped showing up after being knocked down.",
-          vi: "Hôm nay, tôi bảo vệ những hệ thống quan trọng. Không phải vì tôi đặc biệt — mà vì tôi không bao giờ ngừng tò mò, và không bao giờ ngừng xuất hiện sau khi bị đánh gục.",
+          en: "The moment I found my life's purpose, everything changed. Opportunities once obscured by fear and laziness now stood clear before my eyes. The yearning to shine and to live a life of meaning has incinerated every fear of failure. To me now, hardship is a catalyst, and failure is but the steps on the ladder leading to my peak.",
+          vi: "Khoảnh khắc tôi tìm thấy lý tưởng sống của chính mình. Những cơ hội trước đây bị nỗi sợ hãi và sự lười biếng che lấp, giờ đây hiện rõ ngay trước mắt tôi. Khát khao được tỏa sáng, được sống một cuộc đời ý nghĩa đã thiêu rụi mọi nỗi sợ thất bại. Với tôi hiện tại, khó khăn là chất xúc tác, và thất bại chỉ là những nấc thang để tôi leo lên đến đỉnh cao.",
         },
       ],
       lessons: [
         {
-          en: "Failure is data, not defeat",
-          vi: "Thất bại là dữ liệu, không phải thất bại",
+          en: "You never truly fail until you stop trying",
+          vi: "Bạn chỉ thật sự thất bại khi bạn bỏ cuộc",
         },
         {
-          en: "Curiosity outlasts talent",
-          vi: "Sự tò mò bền bỉ hơn tài năng",
+          en: "Let your aspirations overcome your fears",
+          vi: "Hãy để khát vọng vượt qua nỗi sợ của bạn",
         },
         {
-          en: "Protect quietly, impact loudly",
-          vi: "Bảo vệ thầm lặng, tác động mạnh mẽ",
+          en: "Evolve into your best self",
+          vi: "Hãy Không ngừng hoàn thiện bản thân",
         },
       ],
+    },
+    forcedConnection: {
+      question: { en: "Would you like to journey with me?", vi: "Bạn có muốn đồng hành cùng tôi không?" },
+      yesLabel: { en: "Có / Yes", vi: "Có / Yes" },
+      noLabel: { en: "Không / No", vi: "Không / No" },
+      nextLabel: { en: "Tiếp theo / Next", vi: "Tiếp theo / Next" },
     },
     companion: {
       title: { en: "Companion", vi: "Đồng hành" },
       subtitle: {
-        en: "Looking for a Lifetime Partner",
-        vi: "Tìm người đồng hành trọn đời",
+        en: "Where journeys converge",
+        vi: "Nơi những hành trình giao thoa",
       },
       message: {
-        en: "I'm not looking for a quick project or a short-term role. I'm looking for someone — or a team — who values depth over speed, integrity over convenience, and growth over comfort. If that resonates, let's talk.",
-        vi: "Tôi không tìm kiếm dự án ngắn hạn hay vai trò tạm thời. Tôi đang tìm một người — hoặc một đội — coi trọng chiều sâu hơn tốc độ, sự chính trực hơn sự tiện lợi, và sự phát triển hơn sự thoải mái. Nếu điều này cộng hưởng, hãy trò chuyện.",
+        en: "I'm not looking for a quick project or a short-term role. I'm looking for someone — who values depth over speed, integrity over convenience, and growth over comfort. If that resonates, let's talk.",
+        vi: "Tôi không tìm kiếm dự án ngắn hạn hay vai trò tạm thời. Tôi đang tìm một người — coi trọng chiều sâu hơn tốc độ, sự chính trực hơn sự tiện lợi, và sự phát triển hơn sự thoải mái. Nếu điều này cộng hưởng, hãy trò chuyện.",
       },
       cta: {
         en: "Start a Conversation",
@@ -341,7 +360,7 @@ export const siteConfig: SiteConfig = {
         {
           category: "nature",
           image: "/gallery/nature-1.png",
-          caption: { en: "Morning mist through the mountains", vi: "Sương mù buổi sáng qua núi" },
+          caption: { en: "What a beautiful sight of nature !", vi: "Cảnh đồng lúa xanh ngát tuyệt đẹp" },
           span: "tall",
         },
         {
@@ -352,7 +371,7 @@ export const siteConfig: SiteConfig = {
         {
           category: "pets",
           image: "/gallery/pet-1.png",
-          caption: { en: "My faithful companion on late nights", vi: "Người bạn trung thành trong đêm khuya" },
+          caption: { en: "Holy he really need some sleep duh :))", vi: "Trong nó tả không chịu được :)))" },
           span: "wide",
         },
         {
@@ -404,5 +423,14 @@ export const siteConfig: SiteConfig = {
     imagePaths: ["/leaf1.png", "/leaf2.png"],
     maxParticles: 50,
     mobileParticles: 20,
+  },
+  music: {
+    tracks: [
+      { title: "Lateral Thinking | Haloweak", src: "/music/track1.mp3" },
+      { title: "Blood & Tears | MyoMouse", src: "/music/track2.mp3" },
+      { title: "VIETNAM My Home - Masew, MyoMouse, Nguyen Loi", src: "/music/track3.mp3" },
+      { title: "Flow | Haloweak", src: "/music/track4.mp3" },
+      { title: "The Lost Beyond | Kuro Games", src: "/music/track5.mp3" },
+    ],
   },
 } as const;
