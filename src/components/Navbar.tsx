@@ -7,10 +7,11 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const navItems: { id: PageId; label: { en: string; vi: string } }[] = [
   { id: "vision", label: { en: "Vision", vi: "Tầm nhìn" } },
-  { id: "personality", label: { en: "Personality", vi: "Tính cách" } },
+  { id: "about", label: { en: "About Me", vi: "Về tôi" } },
   { id: "journey", label: { en: "Journey", vi: "Hành trình" } },
   { id: "companion", label: { en: "Companion", vi: "Đồng hành" } },
   { id: "personal", label: { en: "Gallery", vi: "Bộ sưu tập" } },
@@ -27,8 +28,9 @@ export function Navbar() {
       <div className="flex justify-between items-center max-w-5xl mx-auto px-4 md:px-8 h-14">
         <button
           onClick={() => { navigateTo("home"); setMenuOpen(false); }}
-          className="font-[family-name:var(--font-display)] text-lg text-(--color-text) hover:text-(--color-primary) transition-colors"
+          className="font-[family-name:var(--font-display)] text-lg text-(--color-text) hover:text-(--color-primary) transition-colors flex items-center gap-2"
         >
+          <Image src="/icon.png" alt="Ming Tris" width={24} height={24} className="rounded" />
           {config.name}
         </button>
 
