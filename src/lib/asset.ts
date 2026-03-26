@@ -1,4 +1,4 @@
-const BASE_PATH = process.env.NODE_ENV === "production" ? "/portfolio" : "";
+const BASE_PATH = "";
 
 export function asset(path: string): string {
   return `${BASE_PATH}${path}`;
