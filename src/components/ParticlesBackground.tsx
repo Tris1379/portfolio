@@ -81,13 +81,19 @@ const particlesOptions: ISourceOptions = {
       },
     },
   },
-  detectRetina: true,
+  detectRetina: false,
   responsive: [
     {
       maxWidth: 768,
       options: {
         particles: {
-          number: { value: 12 },
+          number: { value: 8 },
+          size: { value: { min: 15, max: 30 } },
+        },
+        interactivity: {
+          events: {
+            onHover: { enable: false },
+          },
         },
       },
     },
@@ -125,9 +131,9 @@ export function ParticlesBackground() {
   if (!ParticlesComp) return null;
 
   return (
-    <div
+      <div
       className="fixed inset-0 pointer-events-none"
-      style={{ zIndex: 10, filter: "drop-shadow(0 0 4px rgba(224,138,74,0.4))" }}
+      style={{ zIndex: 10 }}
     >
       <ParticlesComp
         id="kazuha-leaves"

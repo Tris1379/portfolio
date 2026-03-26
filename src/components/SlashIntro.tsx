@@ -25,7 +25,7 @@ export function SlashIntro({ locale }: { locale: Locale }) {
     const vw = window.innerWidth;
     const vh = window.innerHeight;
 
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < (window.innerWidth < 768 ? 25 : 60); i++) {
       setTimeout(() => {
         if (!alive.current || !leafRef.current) return;
         const el = document.createElement("div");

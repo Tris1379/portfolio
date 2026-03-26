@@ -9,15 +9,18 @@ export function MapleLeafStorm() {
   const containerRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
   const spawnLeaves = useCallback((count: number) => {
     if (!containerRef.current) return;
     const vw = window.innerWidth;
     const vh = window.innerHeight;
     const dir = windDirection;
+    const mobile = vw < 768;
 
     for (let i = 0; i < count; i++) {
       const el = document.createElement("div");
-      const size = 30 + Math.random() * 150;
+      const size = mobile ? 20 + Math.random() * 60 : 30 + Math.random() * 150;
 
       // Enter from the leading edge (left for forward, right for backward)
       const startX = dir === 1
@@ -27,10 +30,10 @@ export function MapleLeafStorm() {
 
       // Velocity: enough to fully exit the opposite side
       const travelDist = vw + 600;
-      const dur = 1.5 + Math.random() * 1.0;
+      const dur = mobile ? 2.0 + Math.random() * 1.5 : 1.5 + Math.random() * 1.0;
       const vx = dir * (travelDist / dur);
       const vy = (Math.random() - 0.5) * 200;
-      const rot = (Math.random() - 0.5) * 1080;
+      const rot = (Math.random() - 0.5) * 720;
 
       const leafSrc = Math.random() > 0.5 ? asset("/leaf1.png") : asset("/leaf2.png");
       el.style.cssText = `
@@ -59,11 +62,11 @@ export function MapleLeafStorm() {
 
   useEffect(() => {
     if (showLeafStorm) {
-      // Burst first, then stream
-      spawnLeaves(40);
+      // Burst first, then stream — fewer on mobile
+      spawnLeaves(isMobile ? 15 : 40);
       intervalRef.current = setInterval(() => {
-        spawnLeaves(6);
-      }, 35);
+        spawnLeaves(isMobile ? 2 : 6);
+      }, isMobile ? 80 : 35);
     } else {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
@@ -77,7 +80,7 @@ export function MapleLeafStorm() {
         intervalRef.current = null;
       }
     };
-  }, [showLeafStorm, spawnLeaves]);
+  }, [showLeafStorm, spawnLeaves, isMobile]);
 
   // Container always mounted — leaves remove themselves after exiting viewport
   return (
