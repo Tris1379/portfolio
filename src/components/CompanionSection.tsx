@@ -78,6 +78,18 @@ export function CompanionSection({ locale }: { locale: Locale }) {
           <Facebook className="w-5 h-5" />
           <span className="font-medium">{config.sections.companion.cta}</span>
         </motion.a>
+        <motion.a
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.45 }}
+          href={config.sections.companion.discordUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3 glass px-6 py-3 rounded-xl text-[#5865F2] hover:border-[#5865F2]/50 hover:shadow-[0_0_30px_rgba(88,101,242,0.3),0_0_60px_rgba(88,101,242,0.12)] transition-all duration-300 hover:scale-105 mb-8"
+        >
+          <MessageCircle className="w-5 h-5" />
+          <span className="font-medium">{config.sections.companion.discordCta}</span>
+        </motion.a>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

@@ -83,6 +83,8 @@ export interface CompanionSection {
   message: { en: string; vi: string };
   cta: { en: string; vi: string };
   ctaUrl: string;
+  discordCta: { en: string; vi: string };
+  discordUrl: string;
   email: string;
 }
 
@@ -346,6 +348,11 @@ export const siteConfig: SiteConfig = {
         vi: "Bắt đầu cuộc trò chuyện",
       },
       ctaUrl: "https://www.facebook.com/minh.tris0802",
+      discordCta: {
+        en: "Join Learning Community",
+        vi: "Tham gia cộng đồng học tập",
+      },
+      discordUrl: "https://discord.gg/GNnfYtShEu",
       email: "kazuha@example.com",
     },
     personalSide: {

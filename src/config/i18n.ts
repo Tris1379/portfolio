@@ -80,6 +80,8 @@ export function getConfig(locale: Locale) {
         message: siteConfig.sections.companion.message[locale],
         cta: siteConfig.sections.companion.cta[locale],
         ctaUrl: siteConfig.sections.companion.ctaUrl,
+        discordCta: siteConfig.sections.companion.discordCta[locale],
+        discordUrl: siteConfig.sections.companion.discordUrl,
         email: siteConfig.sections.companion.email,
       },
       personalSide: {
