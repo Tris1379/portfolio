@@ -17,8 +17,8 @@ const particlesOptions: ISourceOptions = {
       type: "image",
       options: {
         image: [
-          { src: "/leaf1.png", width: 32, height: 32 },
-          { src: "/leaf2.png", width: 32, height: 32 },
+          { src: "/leaf1.png", width: 60, height: 60 },
+          { src: "/leaf2.png", width: 60, height: 60 },
         ],
       },
     },
@@ -32,7 +32,7 @@ const particlesOptions: ISourceOptions = {
       },
     },
     size: {
-      value: { min: 10, max: 22 },
+      value: { min: 20, max: 50 },
     },
     move: {
       enable: true,
@@ -63,17 +63,20 @@ const particlesOptions: ISourceOptions = {
     },
   },
   interactivity: {
+    detectsOn: "window",
     events: {
       onHover: {
-        enable: false,
+        enable: true,
         mode: "repulse",
       },
     },
     modes: {
       repulse: {
-        distance: 80,
-        duration: 0.4,
-        speed: 0.5,
+        distance: 120,
+        duration: 0.6,
+        speed: 1,
+        factor: 80,
+        easing: "ease-out-quad",
       },
     },
   },
@@ -123,7 +126,7 @@ export function ParticlesBackground() {
   return (
     <div
       className="fixed inset-0 pointer-events-none"
-      style={{ zIndex: 30, filter: "drop-shadow(0 0 4px rgba(224,138,74,0.4))" }}
+      style={{ zIndex: 10, filter: "drop-shadow(0 0 4px rgba(224,138,74,0.4))" }}
     >
       <ParticlesComp
         id="kazuha-leaves"

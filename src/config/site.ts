@@ -354,21 +354,16 @@ export const siteConfig: SiteConfig = {
       },
       categories: [
         { id: "all", label: { en: "All", vi: "Tất cả" } },
-        { id: "nature", label: { en: "Nature", vi: "Thiên nhiên" } },
+        { id: "scenery", label: { en: "Scenery", vi: "Cảnh vật" } },
         { id: "pets", label: { en: "Pets", vi: "Thú cưng" } },
         { id: "workspace", label: { en: "Workspace", vi: "Không gian làm việc" } },
       ],
       items: [
         {
-          category: "nature",
-          image: "/gallery/nature-1.png",
+          category: "scenery",
+          image: "/gallery/scenery-1.png",
           caption: { en: "What a beautiful sight of nature !", vi: "Cảnh đồng lúa xanh ngát tuyệt đẹp" },
           span: "tall",
-        },
-        {
-          category: "nature",
-          image: "/gallery/nature-2.png",
-          caption: { en: "Where the river meets the sea", vi: "Nơi sông gặp biển" },
         },
         {
           category: "pets",
@@ -377,46 +372,10 @@ export const siteConfig: SiteConfig = {
           span: "wide",
         },
         {
-          category: "pets",
-          image: "/gallery/pet-2.png",
-          caption: { en: "Quiet moments, warm company", vi: "Khoảnh khắc yên tĩnh, bạn đồng hành ấm áp" },
-        },
-        {
-          category: "workspace",
-          image: "/gallery/workspace-1.png",
-          caption: { en: "Where the magic happens", vi: "Nơi điều kỳ diệu xảy ra" },
-          span: "wide",
-        },
-        {
-          category: "workspace",
-          image: "/gallery/workspace-2.png",
-          caption: { en: "The homelab that started it all", vi: "Homelab bắt đầu tất cả" },
+          category: "scenery",
+          image: "/gallery/scenery-2.png",
+          caption: { en: "Night Drive feel so good !", vi: "Đi đêm quá đã !" },
           span: "tall",
-        },
-        {
-          category: "nature",
-          image: "/gallery/nature-3.png",
-          caption: { en: "Autumn leaves, eternal inspiration", vi: "Lá mùa thu, nguồn cảm hứng bất tận" },
-        },
-        {
-          category: "workspace",
-          image: "/gallery/workspace-3.png",
-          caption: { en: "Late night debugging sessions", vi: "Phiên debug đêm khuya" },
-        },
-        {
-          category: "nature",
-          image: "/gallery/nature-4.png",
-          caption: { en: "Sunlight filtering through the canopy", vi: "Ánh nắng xuyên qua tán lá" },
-        },
-        {
-          category: "pets",
-          image: "/gallery/pet-3.png",
-          caption: { en: "Curled up next to the keyboard", vi: "Cuộn tròn bên cạnh bàn phím" },
-        },
-        {
-          category: "workspace",
-          image: "/gallery/workspace-4.png",
-          caption: { en: "Setup evolution over the years", vi: "Sự tiến hóa của setup qua nhiều năm" },
         },
       ],
     },

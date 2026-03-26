@@ -82,7 +82,7 @@ export function PersonalSideSection({ locale }: { locale: Locale }) {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="break-inside-avoid mb-4 group relative overflow-hidden rounded-xl cursor-pointer"
+                className="break-inside-avoid mb-4 group relative overflow-hidden rounded-xl cursor-pointer z-[11]"
               >
                 <img
                   src={item.image}

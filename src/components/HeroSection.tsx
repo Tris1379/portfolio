@@ -9,7 +9,7 @@ import { useLocale } from "next-intl";
 
 const navCards: { id: PageId; icon: React.ReactNode; label: { en: string; vi: string } }[] = [
   { id: "vision", icon: <Eye className="w-5 h-5" />, label: { en: "Vision", vi: "Tầm nhìn" } },
-  { id: "personality", icon: <User className="w-5 h-5" />, label: { en: "Personality", vi: "Tính cách" } },
+  { id: "about", icon: <User className="w-5 h-5" />, label: { en: "About Me", vi: "Về tôi" } },
   { id: "journey", icon: <Route className="w-5 h-5" />, label: { en: "Journey", vi: "Hành trình" } },
   { id: "companion", icon: <Handshake className="w-5 h-5" />, label: { en: "Companion", vi: "Đồng hành" } },
   { id: "personal", icon: <Image className="w-5 h-5" />, label: { en: "Gallery", vi: "Bộ sưu tập" } },
@@ -21,13 +21,15 @@ export function HeroSection({ locale }: { locale: Locale }) {
   const activeLocale = useLocale() as "en" | "vi";
 
   return (
-    <div className="min-h-screen flex items-center justify-center pt-16 pb-8">
-      <div className="max-w-4xl mx-auto text-center px-4">
+    <div className="min-h-screen flex items-center justify-center pt-16 pb-8 atmosphere-section atmosphere-hero">
+      <div className="atmosphere-bg" style={{ backgroundImage: "url('/hero.png')" }} />
+      <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="font-[family-name:var(--font-display)] text-5xl md:text-7xl mb-4 text-(--color-text)"
+          className="font-[family-name:var(--font-display)] text-5xl md:text-7xl mb-4 text-white"
+          style={{ textShadow: '0 2px 12px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.3)' }}
         >
           {config.name}
         </motion.h1>
@@ -35,7 +37,8 @@ export function HeroSection({ locale }: { locale: Locale }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="text-xl md:text-2xl text-(--color-text-secondary) mb-2"
+          className="text-xl md:text-2xl text-white/60 mb-2"
+          style={{ textShadow: '0 1px 6px rgba(0, 0, 0, 0.5)' }}
         >
           {config.title}
         </motion.p>
@@ -43,7 +46,8 @@ export function HeroSection({ locale }: { locale: Locale }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-          className="text-base md:text-lg text-(--color-text-secondary) mb-12 max-w-2xl mx-auto"
+          className="text-base md:text-lg text-white/60 mb-12 max-w-2xl mx-auto"
+          style={{ textShadow: '0 1px 6px rgba(0, 0, 0, 0.5)' }}
         >
           {config.bio}
         </motion.p>
