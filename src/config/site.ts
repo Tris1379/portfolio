@@ -363,19 +363,19 @@ export const siteConfig: SiteConfig = {
       items: [
         {
           category: "scenery",
-          image: "/gallery/scenery-1.png",
+          image: asset("/gallery/scenery-1.png"),
           caption: { en: "What a beautiful sight of nature !", vi: "Cảnh đồng lúa xanh ngát tuyệt đẹp" },
           span: "tall",
         },
         {
           category: "pets",
-          image: "/gallery/pet-1.png",
+          image: asset("/gallery/pet-1.png"),
           caption: { en: "Holy he really need some sleep duh :))", vi: "Trong nó tả không chịu được :)))" },
           span: "wide",
         },
         {
           category: "scenery",
-          image: "/gallery/scenery-2.png",
+          image: asset("/gallery/scenery-2.png"),
           caption: { en: "Night Drive feel so good !", vi: "Đi đêm quá đã !" },
           span: "tall",
         },
