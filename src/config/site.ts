@@ -1,6 +1,8 @@
 // src/config/site.ts — Centralized site configuration
 // ALL visible text must come from this file. No hardcoded strings in components.
 
+import { asset } from "@/lib/asset";
+
 export interface SocialLink {
   platform: string;   // NOT translated
   url: string;        // NOT translated
@@ -381,17 +383,17 @@ export const siteConfig: SiteConfig = {
     },
   },
   particles: {
-    imagePaths: ["/leaf1.png", "/leaf2.png"],
+    imagePaths: [asset("/leaf1.png"), asset("/leaf2.png")],
     maxParticles: 50,
     mobileParticles: 20,
   },
   music: {
     tracks: [
-      { title: "Lateral Thinking | Haloweak", src: "/music/track1.mp3" },
-      { title: "Blood & Tears | MyoMouse", src: "/music/track2.mp3" },
-      { title: "VIETNAM My Home - Masew, MyoMouse, Nguyen Loi", src: "/music/track3.mp3" },
-      { title: "Flow | Haloweak", src: "/music/track4.mp3" },
-      { title: "The Lost Beyond | Kuro Games", src: "/music/track5.mp3" },
+      { title: "Lateral Thinking | Haloweak", src: asset("/music/track1.mp3") },
+      { title: "Blood & Tears | MyoMouse", src: asset("/music/track2.mp3") },
+      { title: "VIETNAM My Home - Masew, MyoMouse, Nguyen Loi", src: asset("/music/track3.mp3") },
+      { title: "Flow | Haloweak", src: asset("/music/track4.mp3") },
+      { title: "The Lost Beyond | Kuro Games", src: asset("/music/track5.mp3") },
     ],
   },
 } as const;
