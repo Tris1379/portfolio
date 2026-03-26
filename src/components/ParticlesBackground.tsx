@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import type { ISourceOptions } from "@tsparticles/engine";
+import { asset } from "@/lib/asset";
 
 const particlesOptions: ISourceOptions = {
   fullScreen: { enable: false },
@@ -17,8 +18,8 @@ const particlesOptions: ISourceOptions = {
       type: "image",
       options: {
         image: [
-          { src: "/leaf1.png", width: 60, height: 60 },
-          { src: "/leaf2.png", width: 60, height: 60 },
+          { src: asset("/leaf1.png"), width: 60, height: 60 },
+          { src: asset("/leaf2.png"), width: 60, height: 60 },
         ],
       },
     },

@@ -10,14 +10,7 @@ export function GallerySection({ locale }: { locale: Locale }) {
   const config = getConfig(locale);
   return (
     <section className="py-16 md:py-24 atmosphere-section atmosphere-gallery">
-      <div style={{ 
-        position: 'fixed',
-        inset: 0,
-        backgroundColor: 'blue',
-        border: '10px solid red',
-        zIndex: 9999,
-        backgroundImage: `url('${asset("/gallery.png")}')`
-      }} />
+      <div className="atmosphere-bg" style={{ backgroundImage: `url('${asset("/gallery.png")}')` }} />
       <div className="relative z-10 max-w-4xl mx-auto px-4 md:px-8">
           <FadeInUp>
             <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-center mb-8 text-white"
