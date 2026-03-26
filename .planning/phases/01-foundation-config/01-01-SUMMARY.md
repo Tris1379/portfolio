@@ -81,7 +81,7 @@ Each task was committed atomically:
 
 1. **Task 1: Scaffold Next.js 15 project and configure CSS design system** - `d15ebf8` (feat)
 
-**Plan metadata:** `24c5157` (docs: complete foundation scaffold plan)
+**Plan metadata:** `6f7df25` (docs: complete foundation scaffold plan)
 
 ## Files Created/Modified
 - `package.json` — Next.js 15, React 19, Tailwind v4 dependencies
