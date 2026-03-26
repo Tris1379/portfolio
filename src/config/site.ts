@@ -379,6 +379,12 @@ export const siteConfig: SiteConfig = {
           caption: { en: "Night Drive feel so good !", vi: "Đi đêm quá đã !" },
           span: "tall",
         },
+        {
+          category: "workspace",
+          image: asset("/gallery/workspace-1.png"),
+          caption: { en: "Hot Cacao & Calculator", vi: "Cacao và Calculator" },
+          span: "wide",
+        },
       ],
     },
   },
