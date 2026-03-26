@@ -7,6 +7,7 @@ import { usePage } from "@/components/PageContext";
 import { getConfig } from "@/config/i18n";
 import type { Locale } from "@/config/i18n";
 import type { ISourceOptions } from "@tsparticles/engine";
+import { asset } from "@/lib/asset";
 
 type Stage = "question" | "celebrating";
 
@@ -79,8 +80,8 @@ function GoldenShower({ onComplete }: { onComplete: () => void }) {
         type: "image",
         options: {
           image: [
-            { src: "/leaf1.png", width: 40, height: 40 },
-            { src: "/leaf2.png", width: 40, height: 40 },
+            { src: asset("/leaf1.png"), width: 40, height: 40 },
+            { src: asset("/leaf2.png"), width: 40, height: 40 },
           ],
         },
       },
@@ -209,7 +210,7 @@ export function ForcedConnectionPage({ locale }: { locale: Locale }) {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center atmosphere-section atmosphere-journey">
-      <div className="atmosphere-bg" style={{ backgroundImage: "url('/journey.png')" }} />
+      <div className="atmosphere-bg" style={{ backgroundImage: `url('${asset("/journey.png")}')` }} />
       <AnimatePresence mode="wait">
         {stage === "question" && (
           <motion.div

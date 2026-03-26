@@ -5,6 +5,7 @@ import type { Locale } from "@/config/i18n";
 import { motion } from "framer-motion";
 import { usePage } from "@/components/PageContext";
 import { Home, Mail, Github, Facebook, MessageCircle } from "lucide-react";
+import { asset } from "@/lib/asset";
 
 const iconMap: Record<string, React.ReactNode> = {
   github: <Github className="w-5 h-5" />,
@@ -18,7 +19,7 @@ export function CompanionSection({ locale }: { locale: Locale }) {
   const { navigateTo } = usePage();
   return (
     <div className="min-h-screen flex flex-col pt-16 pb-8 atmosphere-section atmosphere-companion">
-      <div className="atmosphere-bg" style={{ backgroundImage: "url('/companion.png')" }} />
+      <div className="atmosphere-bg" style={{ backgroundImage: `url('${asset("/companion.png")}')` }} />
       {/* Lighthouse light beam */}
       <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
         <div

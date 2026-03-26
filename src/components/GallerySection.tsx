@@ -4,6 +4,7 @@ import { getConfig } from "@/config/i18n";
 import type { Locale } from "@/config/i18n";
 import { ExternalLink } from "lucide-react";
 import { FadeInUp } from "@/components/FadeInUp";
+import { asset } from "@/lib/asset";
 
 export function GallerySection({ locale }: { locale: Locale }) {
   const config = getConfig(locale);
@@ -15,7 +16,7 @@ export function GallerySection({ locale }: { locale: Locale }) {
         backgroundColor: 'blue',
         border: '10px solid red',
         zIndex: 9999,
-        backgroundImage: "url('/gallery.png')"
+        backgroundImage: `url('${asset("/gallery.png")}')`
       }} />
       <div className="relative z-10 max-w-4xl mx-auto px-4 md:px-8">
           <FadeInUp>

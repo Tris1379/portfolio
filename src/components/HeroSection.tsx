@@ -6,6 +6,7 @@ import type { Locale } from "@/config/i18n";
 import { usePage, type PageId } from "@/components/PageContext";
 import { Eye, User, Route, Handshake, Image } from "lucide-react";
 import { useLocale } from "next-intl";
+import { asset } from "@/lib/asset";
 
 const navCards: { id: PageId; icon: React.ReactNode; label: { en: string; vi: string } }[] = [
   { id: "vision", icon: <Eye className="w-5 h-5" />, label: { en: "Vision", vi: "Tầm nhìn" } },
@@ -22,7 +23,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
 
   return (
     <div className="min-h-screen flex items-center justify-center pt-16 pb-8 atmosphere-section atmosphere-hero">
-      <div className="atmosphere-bg" style={{ backgroundImage: "url('/hero.png')" }} />
+      <div className="atmosphere-bg" style={{ backgroundImage: `url('${asset("/hero.png")}')` }} />
       <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}

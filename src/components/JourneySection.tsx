@@ -5,13 +5,14 @@ import type { Locale } from "@/config/i18n";
 import { motion } from "framer-motion";
 import { usePage } from "@/components/PageContext";
 import { Home, Leaf } from "lucide-react";
+import { asset } from "@/lib/asset";
 
 export function JourneySection({ locale }: { locale: Locale }) {
   const config = getConfig(locale);
   const { navigateTo } = usePage();
   return (
     <div className="min-h-screen flex flex-col pt-16 pb-8 atmosphere-section atmosphere-journey">
-      <div className="atmosphere-bg" style={{ backgroundImage: "url('/journey.png')" }} />
+      <div className="atmosphere-bg" style={{ backgroundImage: `url('${asset("/journey.png")}')` }} />
       <div className="relative z-10 flex-1 flex flex-col justify-center max-w-4xl mx-auto px-4 md:px-8 py-12 w-full">
         <button
           onClick={() => navigateTo("home")}

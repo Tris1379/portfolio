@@ -8,6 +8,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 
 const navItems: { id: PageId; label: { en: string; vi: string } }[] = [
   { id: "vision", label: { en: "Vision", vi: "Tầm nhìn" } },
@@ -30,7 +31,7 @@ export function Navbar() {
           onClick={() => { navigateTo("home"); setMenuOpen(false); }}
           className="font-[family-name:var(--font-display)] text-lg text-(--color-text) hover:text-(--color-primary) transition-colors flex items-center gap-2"
         >
-          <Image src="/icon.png" alt="Ming Tris" width={24} height={24} className="rounded" />
+          <Image src={asset("/icon.png")} alt="Ming Tris" width={24} height={24} className="rounded" />
           {config.name}
         </button>
 

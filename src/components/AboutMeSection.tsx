@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { usePage } from "@/components/PageContext";
 import { Home, User, Calendar, MapPin, Sparkles, Heart, Ban, Target, GraduationCap } from "lucide-react";
 import { useEffect, useState } from "react";
+import { asset } from "@/lib/asset";
 
 function GlitchMBTI({ mbti }: { mbti: string }) {
   const [phase, setPhase] = useState<'idle_I' | 'toE' | 'idle_E' | 'backToI'>('idle_I');
@@ -75,7 +76,7 @@ export function AboutMeSection({ locale }: { locale: Locale }) {
 
   return (
     <div className="min-h-screen flex flex-col pt-16 pb-8 atmosphere-section atmosphere-personality">
-      <div className="atmosphere-bg" style={{ backgroundImage: "url('/personality.png')" }} />
+      <div className="atmosphere-bg" style={{ backgroundImage: `url('${asset("/personality.png")}')` }} />
       <div className="relative z-10 flex-1 flex flex-col justify-center max-w-4xl mx-auto px-4 md:px-8 py-12 w-full">
         <button
           onClick={() => navigateTo("home")}

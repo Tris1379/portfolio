@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useCallback } from "react";
 import { usePage } from "@/components/PageContext";
+import { asset } from "@/lib/asset";
 
 export function MapleLeafStorm() {
   const { showLeafStorm, windDirection } = usePage();
@@ -31,7 +32,7 @@ export function MapleLeafStorm() {
       const vy = (Math.random() - 0.5) * 200;
       const rot = (Math.random() - 0.5) * 1080;
 
-      const leafSrc = Math.random() > 0.5 ? "/leaf1.png" : "/leaf2.png";
+      const leafSrc = Math.random() > 0.5 ? asset("/leaf1.png") : asset("/leaf2.png");
       el.style.cssText = `
         position:absolute;
         left:${startX}px;top:${startY}px;
