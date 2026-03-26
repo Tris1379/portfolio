@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { Providers } from "@/components/Providers";
 import { Navbar } from "@/components/Navbar";
+import { ParticlesLazy } from "@/components/ParticlesLazy";
+import { SlashIntro } from "@/components/SlashIntro";
+import { MusicPlayer } from "@/components/MusicPlayer";
 import { getConfig } from "@/config/i18n";
 import type { Locale } from "@/config/i18n";
+import { routing } from "@/i18n/routing";
 import "../globals.css";
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,6 +34,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setRequestLocale(locale);
   const config = getConfig(locale as Locale);
   return {
     title: `${config.name} — Portfolio`,
@@ -41,6 +50,7 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const messages = await getMessages();
 
   return (
@@ -52,7 +62,10 @@ export default async function LocaleLayout({
       <body className="bg-(--color-bg) text-(--color-text) antialiased font-[family-name:var(--font-body)]">
         <NextIntlClientProvider messages={messages}>
           <Providers>
+            <SlashIntro locale={locale as Locale} />
+            <ParticlesLazy />
             <Navbar />
+            <MusicPlayer />
             {children}
           </Providers>
         </NextIntlClientProvider>
